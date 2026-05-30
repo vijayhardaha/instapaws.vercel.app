@@ -1,7 +1,9 @@
 import { Heart, ExternalLink, DollarSign, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
+import { Container } from '@/components/layout/container';
+import { CtaSection } from '@/components/shared/cta-section';
+import { HeroBanner } from '@/components/shared/hero-banner';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
@@ -70,24 +72,21 @@ const PARTNER_ORGS = [
 ];
 
 /**
+ * Donate page — fund allocation breakdown and partner organizations.
  *
+ * @returns {unknown} The donate page content.
  */
 export default function DonatePage() {
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="Support the Cause"
-            title="Donate to Help Dogs in Need"
-            description="Your donation supports verified animal welfare organizations that rescue and rehabilitate dogs every day."
-            className="text-primary-foreground"
-          />
-        </div>
-      </section>
+      <HeroBanner
+        tag="Support the Cause"
+        title="Donate to Help Dogs in Need"
+        description="Your donation supports verified animal welfare organizations that rescue and rehabilitate dogs every day."
+      />
 
       <section className="border-border bg-background border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="px-4 py-16 sm:px-6 lg:px-8">
           <SectionHeading
             tag="Transparency"
             title="Where Your Money Goes"
@@ -110,7 +109,7 @@ export default function DonatePage() {
       </section>
 
       <section className="border-border bg-muted/30 border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Partners"
             title="Where to Donate"
@@ -139,33 +138,17 @@ export default function DonatePage() {
               </Card>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Every Dollar Saves a Life</h2>
-          <p className="text-primary-foreground/80 mx-auto mt-4 max-w-xl">
-            Even a small donation can provide emergency care, food, or shelter for a dog in crisis.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <a href="https://www.aspca.org" target="_blank" rel="noopener noreferrer">
-                <Heart className="mr-2 h-4 w-4" />
-                Donate Now <ExternalLink className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
-            >
-              <Link href="/submit">Report a Video Instead</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title="Every Dollar Saves a Life"
+        description="Even a small donation can provide emergency care, food, or shelter for a dog in crisis."
+        buttons={[
+          { label: 'Donate Now', href: 'https://www.aspca.org', icon: <Heart className="mr-2 h-4 w-4" /> },
+          { label: 'Report a Video Instead', href: '/submit', variant: 'outline' },
+        ]}
+      />
 
       <section className="bg-muted/50">
         <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
