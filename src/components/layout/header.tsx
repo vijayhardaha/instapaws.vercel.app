@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { Menu, X } from 'lucide-react';
 
+import { Container } from '@/components/layout/container';
 import { NavLinks } from '@/components/layout/nav-links';
 import { SiteLogo } from '@/components/layout/site-logo';
 import { Button } from '@/components/ui/button';
@@ -11,13 +12,15 @@ import { cn } from '@/lib/utils';
 
 /**
  * Site header with logo, navigation, and mobile hamburger menu.
+ *
+ * @returns {unknown} The header element.
  */
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <Container className="flex h-16 items-center justify-between">
         {/* Logo */}
         <SiteLogo />
 
@@ -35,7 +38,7 @@ export function Header() {
         >
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
-      </div>
+      </Container>
 
       {/* Mobile navigation */}
       <div
