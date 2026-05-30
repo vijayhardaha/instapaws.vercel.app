@@ -1,12 +1,17 @@
 'use client';
 
+import { type CSSProperties } from 'react';
+
 import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { Toaster as Sonner, type ToasterProps } from 'sonner';
 
 /**
+ * Sonner toaster component — renders toast notifications.
  *
- * @param root0
+ * @param {unknown} props - Component props forwarded to Sonner.
+ *
+ * @returns {unknown} The toaster component.
  */
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = 'system' } = useTheme();
@@ -28,7 +33,7 @@ const Toaster = ({ ...props }: ToasterProps) => {
           '--normal-text': 'var(--popover-foreground)',
           '--normal-border': 'var(--border)',
           '--border-radius': 'var(--radius)',
-        } as React.CSSProperties
+        } as CSSProperties
       }
       toastOptions={{ classNames: { toast: 'cn-toast' } }}
       {...props}
