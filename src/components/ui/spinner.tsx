@@ -1,13 +1,18 @@
+import { type ComponentProps } from 'react';
+
 import { Loader2Icon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
 /**
+ * Loading spinner icon.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The spinner element.
  */
-function Spinner({ className, ...props }: React.ComponentProps<'svg'>) {
+function Spinner({ className, ...props }: ComponentProps<'svg'>) {
   return <Loader2Icon role="status" aria-label="Loading" className={cn('size-4 animate-spin', className)} {...props} />;
 }
 
