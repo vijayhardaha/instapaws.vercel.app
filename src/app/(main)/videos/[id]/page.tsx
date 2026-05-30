@@ -11,9 +11,12 @@ interface Props {
 }
 
 /**
+ * Generate metadata for the video detail page.
  *
- * @param root0
- * @param root0.params
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.params - Route parameters including video ID.
+ *
+ * @returns {unknown} The page metadata.
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
@@ -24,9 +27,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 /**
+ * Video detail page — shows video report with content warning gate.
  *
- * @param root0
- * @param root0.params
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.params - Route parameters including video ID.
+ *
+ * @returns {unknown} The video detail page content.
  */
 export default async function VideoDetailPage({ params }: Props) {
   const { id } = await params;
