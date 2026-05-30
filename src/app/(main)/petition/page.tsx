@@ -1,10 +1,11 @@
-import { PenLine, ExternalLink, CheckCircle2, Share2 } from 'lucide-react';
+import { PenLine, CheckCircle2, Share2 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { CtaSection } from '@/components/shared/cta-section';
+import { HeroBanner } from '@/components/shared/hero-banner';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { StatCard } from '@/components/shared/stat-card';
-import { Button } from '@/components/ui/button';
 import { Card, CardHeader } from '@/components/ui/card';
 
 export const metadata: Metadata = {
@@ -46,24 +47,21 @@ const CURRENT_SIGNATURES = 12847;
 const PROGRESS_PERCENT = Math.round((CURRENT_SIGNATURES / SIGNATURE_GOAL) * 100);
 
 /**
+ * Petition page — demands, progress bar, and CTAs.
  *
+ * @returns {unknown} The petition page content.
  */
 export default function PetitionPage() {
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="Campaign"
-            title="Demand Better From Instagram"
-            description="Instagram fails to detect and remove animal abuse content. We are demanding real change."
-            className="text-primary-foreground"
-          />
-        </div>
-      </section>
+      <HeroBanner
+        tag="Campaign"
+        title="Demand Better From Instagram"
+        description="Instagram fails to detect and remove animal abuse content. We are demanding real change."
+      />
 
       <section className="border-border bg-background border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="px-4 py-16 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             <StatCard value={CURRENT_SIGNATURES.toLocaleString()} label="Signatures" />
             <StatCard value={SIGNATURE_GOAL.toLocaleString()} label="Goal" />
@@ -74,7 +72,7 @@ export default function PetitionPage() {
       </section>
 
       <section className="border-border bg-muted/30 border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="px-4 py-16 sm:px-6 lg:px-8">
           <SectionHeading
             tag="Progress"
             title="Petition Status"
@@ -93,7 +91,7 @@ export default function PetitionPage() {
       </section>
 
       <section className="border-border bg-background border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="px-4 py-16 sm:px-6 lg:px-8">
           <SectionHeading
             tag="Our Demands"
             title="What We Are Asking For"
@@ -119,43 +117,24 @@ export default function PetitionPage() {
         </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Sign the Petition. Share It Widely.</h2>
-          <p className="text-primary-foreground/80 mx-auto mt-4 max-w-xl">
-            Together we can force Instagram to take animal welfare seriously.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <PenLine className="mr-2 h-4 w-4" />
-                Sign the Petition <ExternalLink className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
-            >
-              <a href="#" target="_blank" rel="noopener noreferrer">
-                <Share2 className="mr-2 h-4 w-4" />
-                Share on Social Media
-              </a>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title="Sign the Petition. Share It Widely."
+        description="Together we can force Instagram to take animal welfare seriously."
+        buttons={[
+          { label: 'Sign the Petition', href: '#', icon: <PenLine className="mr-2 h-4 w-4" /> },
+          { label: 'Share on Social Media', href: '#', icon: <Share2 className="mr-2 h-4 w-4" />, variant: 'outline' },
+        ]}
+      />
 
       <section className="bg-muted/50">
-        <div className="mx-auto max-w-4xl px-4 py-12 text-center sm:px-6 lg:px-8">
+        <div className="px-4 py-12 text-center sm:px-6 lg:px-8">
           <p className="text-muted-foreground text-sm">
             Want to do more?{' '}
-            <Link href="/submit" className="hover:text-foreground font-medium underline">
+            <Link href="/submit" className="hover:text-foreground font-semibold underline">
               Submit a video report
             </Link>{' '}
             or{' '}
-            <Link href="/donate" className="hover:text-foreground font-medium underline">
+            <Link href="/donate" className="hover:text-foreground font-semibold underline">
               donate to rescue organizations
             </Link>
             .
