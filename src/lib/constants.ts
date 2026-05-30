@@ -2,6 +2,8 @@
 // InstaPaws Constants & Site Configuration
 // =======================================================================
 
+import { siteUrl } from '@/lib/utils/url';
+
 import type { NavItem, SiteStats, SuccessStory, VideoReport } from './types';
 
 // ---- Site Metadata ----
@@ -10,7 +12,9 @@ export const SITE = {
   tagline: 'See. Report. Protect.',
   description:
     'A collection hub for compassion. Report, archive, and take action against Instagram videos showing cruelty, neglect, and abuse toward dogs.',
-  url: 'https://www.instapaws.com',
+  get url() {
+    return siteUrl();
+  },
   email: 'contact@instapaws.com',
   contentWarning: 'This site contains disturbing content showing harm to dogs.',
   year: new Date().getFullYear(),
@@ -160,23 +164,31 @@ const MOCK_VIDEOS: VideoReport[] = [
 ];
 
 /**
+ * Get all mock video reports.
  *
+ * @returns {VideoReport[]} Array of mock video report objects.
  */
 export function getMockVideos(): VideoReport[] {
   return MOCK_VIDEOS;
 }
 
 /**
+ * Get a single mock video report by its ID.
  *
- * @param id
+ * @param {string} id - Video report identifier.
+ *
+ * @returns {VideoReport | undefined} The matching video report, or undefined if not found.
  */
 export function getMockVideoById(id: string): VideoReport | undefined {
   return MOCK_VIDEOS.find((v) => v.id === id);
 }
 
 /**
+ * Get the most recent approved mock video reports.
  *
- * @param count
+ * @param {number} count - Number of recent videos to return (default 3).
+ *
+ * @returns {VideoReport[]} Array of the most recently reported approved videos.
  */
 export function getRecentMockVideos(count: number = 3): VideoReport[] {
   return MOCK_VIDEOS.filter((v) => v.moderationStatus === 'approved')
