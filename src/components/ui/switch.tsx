@@ -1,22 +1,25 @@
 'use client';
 
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import { Switch as SwitchPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
 /**
+ * Switch / toggle component.
  *
- * @param root0
- * @param root0.className
- * @param root0.size
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.size - Toggle size variant.
+ *
+ * @returns {unknown} The switch element.
  */
 function Switch({
   className,
   size = 'default',
   ...props
-}: React.ComponentProps<typeof SwitchPrimitive.Root> & { size?: 'sm' | 'default' }) {
+}: ComponentProps<typeof SwitchPrimitive.Root> & { size?: 'sm' | 'default' }) {
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
