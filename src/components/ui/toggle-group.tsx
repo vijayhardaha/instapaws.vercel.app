@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import { createContext, useContext, type ComponentProps, type CSSProperties } from 'react';
 
 import { type VariantProps } from 'class-variance-authority';
 import { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';
@@ -8,19 +8,22 @@ import { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';
 import { toggleVariants } from '@/components/ui/toggle';
 import { cn } from '@/lib/utils';
 
-const ToggleGroupContext = React.createContext<
+const ToggleGroupContext = createContext<
   VariantProps<typeof toggleVariants> & { spacing?: number; orientation?: 'horizontal' | 'vertical' }
 >({ size: 'default', variant: 'default', spacing: 2, orientation: 'horizontal' });
 
 /**
+ * Toggle group — groups toggle buttons together.
  *
- * @param root0
- * @param root0.className
- * @param root0.variant
- * @param root0.size
- * @param root0.spacing
- * @param root0.orientation
- * @param root0.children
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.variant - Visual variant.
+ * @param {unknown} props.size - Button size.
+ * @param {unknown} props.spacing - Gap between items.
+ * @param {unknown} props.orientation - Layout orientation.
+ * @param {unknown} props.children - Child toggle items.
+ *
+ * @returns {unknown} The toggle group element.
  */
 function ToggleGroup({
   className,
@@ -30,7 +33,7 @@ function ToggleGroup({
   orientation = 'horizontal',
   children,
   ...props
-}: React.ComponentProps<typeof ToggleGroupPrimitive.Root>
+}: ComponentProps<typeof ToggleGroupPrimitive.Root>
   & VariantProps<typeof toggleVariants> & { spacing?: number; orientation?: 'horizontal' | 'vertical' }) {
   return (
     <ToggleGroupPrimitive.Root
@@ -39,7 +42,7 @@ function ToggleGroup({
       data-size={size}
       data-spacing={spacing}
       data-orientation={orientation}
-      style={{ '--gap': spacing } as React.CSSProperties}
+      style={{ '--gap': spacing } as CSSProperties}
       className={cn(
         'group/toggle-group flex w-fit flex-row items-center gap-[--spacing(var(--gap))] rounded-lg data-vertical:flex-col data-vertical:items-stretch data-[size=sm]:rounded-[min(var(--radius-md),10px)]',
         className
@@ -54,12 +57,15 @@ function ToggleGroup({
 }
 
 /**
+ * Toggle group item button.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.variant
- * @param root0.size
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.children - Item content.
+ * @param {unknown} props.variant - Visual variant.
+ * @param {unknown} props.size - Button size.
+ *
+ * @returns {unknown} The toggle group item element.
  */
 function ToggleGroupItem({
   className,
@@ -67,8 +73,8 @@ function ToggleGroupItem({
   variant = 'default',
   size = 'default',
   ...props
-}: React.ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>) {
-  const context = React.useContext(ToggleGroupContext);
+}: ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>) {
+  const context = useContext(ToggleGroupContext);
 
   return (
     <ToggleGroupPrimitive.Item
