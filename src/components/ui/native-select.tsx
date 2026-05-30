@@ -1,16 +1,19 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import { ChevronDownIcon } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 
-type NativeSelectProps = Omit<React.ComponentProps<'select'>, 'size'> & { size?: 'sm' | 'default' };
+type NativeSelectProps = Omit<ComponentProps<'select'>, 'size'> & { size?: 'sm' | 'default' };
 
 /**
+ * Native select dropdown component using the browser's built-in select.
  *
- * @param root0
- * @param root0.className
- * @param root0.size
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.size - Select size variant.
+ *
+ * @returns {unknown} The native select element.
  */
 function NativeSelect({ className, size = 'default', ...props }: NativeSelectProps) {
   return (
@@ -34,30 +37,4 @@ function NativeSelect({ className, size = 'default', ...props }: NativeSelectPro
   );
 }
 
-/**
- *
- * @param root0
- * @param root0.className
- */
-function NativeSelectOption({ className, ...props }: React.ComponentProps<'option'>) {
-  return (
-    <option data-slot="native-select-option" className={cn('bg-[Canvas] text-[CanvasText]', className)} {...props} />
-  );
-}
-
-/**
- *
- * @param root0
- * @param root0.className
- */
-function NativeSelectOptGroup({ className, ...props }: React.ComponentProps<'optgroup'>) {
-  return (
-    <optgroup
-      data-slot="native-select-optgroup"
-      className={cn('bg-[Canvas] text-[CanvasText]', className)}
-      {...props}
-    />
-  );
-}
-
-export { NativeSelect, NativeSelectOptGroup, NativeSelectOption };
+export { NativeSelect };
