@@ -9,10 +9,12 @@ interface StatCardProps {
 /**
  * Statistics display card — large number, small label.
  *
- * @param root0
- * @param root0.value
- * @param root0.label
- * @param root0.className
+ * @param {StatCardProps} props - Component props.
+ * @param {string | number} props.value - Statistic value to display.
+ * @param {string} props.label - Label describing the statistic.
+ * @param {string} [props.className] - Additional CSS classes.
+ *
+ * @returns {JSX.Element} Stat card with value and label.
  */
 export function StatCard({ value, label, className }: StatCardProps) {
   return (
