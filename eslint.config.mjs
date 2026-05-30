@@ -1,18 +1,14 @@
-import { defineConfig, globalIgnores } from "eslint/config";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+/**
+ * =====================================================================
+ * Eslint Configuration (Flat)
+ * =====================================================================
+ * Purpose: Project-wide ESLint configuration for Next.js, TypeScript, and
+ *          React. Enforces code quality, accessibility, and consistent styling.
+ * Docs:    https://eslint.org/docs/latest/use/configure/configuration-files-new
+ * Usage:   bunx eslint .
+ * =====================================================================
+ */
 
-const eslintConfig = defineConfig([
-  ...nextVitals,
-  ...nextTs,
-  // Override default ignores of eslint-config-next.
-  globalIgnores([
-    // Default ignores of eslint-config-next:
-    ".next/**",
-    "out/**",
-    "build/**",
-    "next-env.d.ts",
-  ]),
-]);
+import { createConfig } from '@vijayhardaha/dev-config/eslint/next';
 
-export default eslintConfig;
+export default createConfig();
