@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 };
 
 /**
+ * Submit page — renders the video submission form.
  *
+ * @returns {unknown} The submit page content.
  */
 export default function SubmitPage() {
   return <SubmitFormClient />;
