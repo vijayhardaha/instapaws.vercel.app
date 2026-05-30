@@ -1,11 +1,16 @@
+import type { ReactNode } from 'react';
+
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+
+import { VercelAnalytics } from '@/components/shared/vercel-analytics';
+import { fontClassNames } from '@/lib/fonts';
+import { siteUrl } from '@/lib/utils/url';
 
 import './globals.css';
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] });
-
-const geistMono = Geist_Mono({ variable: '--font-geist-mono', subsets: ['latin'] });
+const BASE_URL = siteUrl();
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 // ---- Metadata ----
 export const metadata: Metadata = {
@@ -23,12 +28,12 @@ export const metadata: Metadata = {
   authors: [{ name: 'InstaPaws' }],
   creator: 'InstaPaws',
   publisher: 'InstaPaws',
-  metadataBase: new URL('https://www.instapaws.com'),
+  metadataBase: new URL(BASE_URL),
   openGraph: {
     title: 'InstaPaws — See It. Report It. Protect Them.',
     description:
       'Exposing Instagram videos where dogs are being harmed. A compassion-driven collection hub for accountability and action.',
-    url: 'https://www.instapaws.com',
+    url: BASE_URL,
     siteName: 'InstaPaws',
     type: 'website',
     locale: 'en_US',
@@ -49,13 +54,23 @@ export const viewport: Viewport = { themeColor: '#2C2C2C', width: 'device-width'
  * Root layout — defines <html> and <body> tags, font loading.
  * Metadata is handled above.
  *
- * @param root0
- * @param root0.children
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.children - Child content to render.
+ *
+ * @returns {ReactNode} The root HTML document structure.
  */
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+    <html
+      lang="en"
+      className={`${fontClassNames} font-lg h-full font-sans font-medium antialiased`}
+      data-scroll-behavior="smooth"
+    >
+      <body className="flex min-h-full flex-col">
+        {children}
+        {process.env.NODE_ENV === 'production' && GA_ID && <GoogleAnalytics gaId={GA_ID} />}
+        {process.env.NODE_ENV === 'production' && <VercelAnalytics />}
+      </body>
     </html>
   );
 }
