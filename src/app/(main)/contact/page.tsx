@@ -1,6 +1,7 @@
-import { Send, Users, Newspaper, HelpCircle, MessageSquare } from 'lucide-react';
 import type { Metadata } from 'next';
 
+import { ContactFormClient } from '@/components/forms/contact-form-client';
+import { Container } from '@/components/layout/container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -11,28 +12,23 @@ export const metadata: Metadata = {
   description: 'Get in touch with InstaPaws. Submit a tip, inquire about partnerships, or reach our team.',
 };
 
-const CONTACT_TYPES = [
-  { value: 'tip', label: 'Anonymous Tip', icon: HelpCircle },
-  { value: 'partnership', label: 'Partnership Inquiry', icon: Users },
-  { value: 'media', label: 'Media / Press', icon: Newspaper },
-  { value: 'other', label: 'General Question', icon: MessageSquare },
-];
-
 /**
+ * Contact page with form submission and partnership info.
  *
+ * @returns {unknown} The contact page content.
  */
 export default function ContactPage() {
   return (
     <>
       <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Contact"
             title="Get in Touch"
             description="Have a tip, a question, or a partnership idea? We are here to listen."
             className="text-primary-foreground"
           />
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-background border-b">
@@ -42,85 +38,7 @@ export default function ContactPage() {
             title="Contact Form"
             description="All fields marked are optional — you may remain fully anonymous."
           />
-
-          <form className="mt-10 space-y-6" action="#">
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="space-y-2">
-                <label htmlFor="name" className="text-sm font-medium">
-                  Name (optional)
-                </label>
-                <input
-                  id="name"
-                  type="text"
-                  placeholder="Anonymous"
-                  className="border-border bg-background w-full rounded-md border px-3 py-2 text-sm"
-                />
-              </div>
-              <div className="space-y-2">
-                <label htmlFor="email" className="text-sm font-medium">
-                  Email (optional)
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  placeholder="you@example.com"
-                  className="border-border bg-background w-full rounded-md border px-3 py-2 text-sm"
-                />
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label className="text-sm font-medium">Reason for Contact</label>
-              <div className="grid gap-3 sm:grid-cols-4">
-                {CONTACT_TYPES.map((t) => (
-                  <div
-                    key={t.value}
-                    className="border-border hover:bg-muted/50 flex cursor-pointer items-center gap-2 rounded-md border p-3 text-sm transition-colors"
-                  >
-                    <t.icon className="text-muted-foreground h-4 w-4" aria-hidden="true" />
-                    <span>{t.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="subject" className="text-sm font-medium">
-                Subject
-              </label>
-              <input
-                id="subject"
-                type="text"
-                placeholder="Brief summary of your message"
-                className="border-border bg-background w-full rounded-md border px-3 py-2 text-sm"
-                required
-              />
-            </div>
-
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-medium">
-                Message
-              </label>
-              <textarea
-                id="message"
-                rows={6}
-                placeholder="Describe your message in detail..."
-                className="border-border bg-background w-full rounded-md border px-3 py-2 text-sm"
-                required
-              />
-            </div>
-
-            <div className="flex items-center gap-4">
-              <button
-                type="submit"
-                className="bg-primary text-primary-foreground hover:bg-primary/90 inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors"
-              >
-                <Send className="h-4 w-4" />
-                Send Message
-              </button>
-              <p className="text-muted-foreground text-xs">Your information is kept confidential.</p>
-            </div>
-          </form>
+          <ContactFormClient />
         </div>
       </section>
 
