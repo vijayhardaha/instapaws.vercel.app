@@ -1,0 +1,192 @@
+import { ShieldCheck, Users, Scale, Flag, ArrowRight, Heart, Eye, Ban } from 'lucide-react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+
+import { SectionHeading } from '@/components/shared/section-heading';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { SITE } from '@/lib/constants';
+
+export const metadata: Metadata = {
+  title: 'About',
+  description: 'Why InstaPaws exists. Our mission, editorial policy, and commitment to compassion and accountability.',
+};
+
+const PRINCIPLES = [
+  {
+    icon: ShieldCheck,
+    title: 'Accuracy First',
+    text: 'Every submission is manually reviewed. We verify genuine harm before publishing.',
+  },
+  {
+    icon: Scale,
+    title: 'Fair Use & Legal Compliance',
+    text: 'We do not host videos. We embed public Instagram content under fair use.',
+  },
+  {
+    icon: Users,
+    title: 'Anonymity & Safety',
+    text: 'Reporters can submit anonymously. We protect identities to prevent retaliation.',
+  },
+  {
+    icon: Heart,
+    title: 'Compassion, Not Sensationalism',
+    text: 'We blur graphic content by default. Accountability over clicks.',
+  },
+];
+
+const MODERATION_STEPS = [
+  'Every submission is queued for manual review by a trained volunteer.',
+  'A reviewer verifies the Instagram URL is live and depicts animal harm.',
+  'Graphic content is flagged and blurred by default on the site.',
+  'If verified, the video is reported to Instagram and logged in our archive.',
+  'Submissions that cannot be verified are rejected with notes.',
+];
+
+const BOUNDARIES = [
+  { icon: Eye, text: 'We do not display unmoderated graphic content.' },
+  { icon: Ban, text: 'We do not publish personal information about reporters.' },
+  { icon: Scale, text: 'We do not make legal accusations — we document and escalate.' },
+  { icon: ShieldCheck, text: 'We do not accept paid submissions or sponsorships.' },
+];
+
+/**
+ *
+ */
+export default function AboutPage() {
+  return (
+    <>
+      <section className="border-border bg-primary text-primary-foreground border-b">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <SectionHeading
+            tag="About InstaPaws"
+            title="A Compassion Hub for Dogs in Distress"
+            description={`${SITE.name} exists because animals cannot speak for themselves. We archive, expose, and take action against Instagram videos showing cruelty and abuse toward dogs.`}
+            className="text-primary-foreground"
+          />
+        </div>
+      </section>
+
+      <section className="border-border bg-background border-b">
+        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+          <SectionHeading
+            tag="Our Mission"
+            title="Why We Built This"
+            description="Every day, videos of dogs being harmed appear on Instagram. InstaPaws fills the gap when platforms fail to act."
+          />
+          <div className="text-muted-foreground mt-10 space-y-6 text-base leading-relaxed">
+            <p>
+              InstaPaws is not a social media platform. We do not host videos. We do not profit from suffering. We are a
+              transparent archive that documents evidence of animal abuse found on Instagram and takes action to get it
+              removed.
+            </p>
+            <p>
+              Our team consists of volunteers and animal welfare advocates who believe that public exposure is one of
+              the most effective tools for accountability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="border-border bg-muted/30 border-b">
+        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+          <SectionHeading tag="Editorial Policy" title="Our Principles" />
+          <div className="mt-10 grid gap-6 sm:grid-cols-2">
+            {PRINCIPLES.map((p) => (
+              <Card key={p.title}>
+                <CardHeader>
+                  <div className="flex items-center gap-3">
+                    <div className="bg-accent/10 flex h-10 w-10 items-center justify-center rounded-full">
+                      <p.icon className="text-accent h-5 w-5" aria-hidden="true" />
+                    </div>
+                    <h3 className="text-base font-semibold">{p.title}</h3>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{p.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-border bg-background border-b">
+        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+          <SectionHeading
+            tag="Moderation"
+            title="How We Review Submissions"
+            description="No video is published automatically. Every submission goes through human review."
+          />
+          <ol className="mt-10 space-y-4">
+            {MODERATION_STEPS.map((step, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="bg-accent text-accent-foreground mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold">
+                  {i + 1}
+                </span>
+                <p className="text-muted-foreground text-sm leading-relaxed">{step}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="border-border bg-destructive/5 border-b">
+        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+          <SectionHeading tag="Boundaries" title="What We Do Not Do" />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {BOUNDARIES.map((item) => (
+              <div key={item.text} className="border-border flex items-start gap-3 rounded-md border p-4">
+                <item.icon className="text-destructive/80 mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
+                <p className="text-muted-foreground text-sm">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:px-8">
+          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Join the Fight Against Animal Cruelty</h2>
+          <p className="text-primary-foreground/80 mx-auto mt-4 max-w-xl">
+            Report a video, sign the petition, or donate — every action counts.
+          </p>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+              <Link href="/submit">
+                <Flag className="mr-2 h-4 w-4" />
+                Report a Video
+              </Link>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
+            >
+              <Link href="/rescue">
+                Take Action <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-muted/50">
+        <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+          <Separator className="mb-6" />
+          <p className="text-muted-foreground text-xs leading-relaxed">
+            <strong>Legal Note:</strong> InstaPaws is independent and not affiliated with Instagram or Meta Platforms,
+            Inc. All embedded content is publicly available and used under fair use. If you believe your content has
+            been used improperly, please{' '}
+            <Link href="/contact" className="hover:text-foreground underline">
+              contact us
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
+    </>
+  );
+}
