@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 import type { Metadata } from 'next';
 
 import { fetchVideos } from '@/lib/data/videos';
@@ -12,8 +14,10 @@ export const metadata: Metadata = {
 
 /**
  * Video Library page — server component shell that fetches data and passes to client.
+ *
+ * @returns {Promise<ReactNode>} The video library page with initial data.
  */
-export default async function VideoLibraryPage() {
+export default async function VideoLibraryPage(): Promise<ReactNode> {
   const { videos, total } = await fetchVideos({ pageSize: 100 });
 
   return <VideoLibraryClient initialVideos={videos} initialTotal={total} />;
