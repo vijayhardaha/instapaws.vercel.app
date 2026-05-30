@@ -1,14 +1,17 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import { cn } from '@/lib/utils';
 
 /**
+ * Card container component.
  *
- * @param root0
- * @param root0.className
- * @param root0.size
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.size - Card size variant.
+ *
+ * @returns {unknown} The card element.
  */
-function Card({ className, size = 'default', ...props }: React.ComponentProps<'div'> & { size?: 'default' | 'sm' }) {
+function Card({ className, size = 'default', ...props }: ComponentProps<'div'> & { size?: 'default' | 'sm' }) {
   return (
     <div
       data-slot="card"
@@ -23,11 +26,14 @@ function Card({ className, size = 'default', ...props }: React.ComponentProps<'d
 }
 
 /**
+ * Card header section.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The card header element.
  */
-function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
+function CardHeader({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-header"
@@ -41,35 +47,44 @@ function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 /**
+ * Card title subcomponent.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The card title element.
  */
-function CardTitle({ className, ...props }: React.ComponentProps<'div'>) {
+function CardTitle({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-title"
-      className={cn('font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm', className)}
+      className={cn('font-heading text-base leading-snug font-semibold group-data-[size=sm]/card:text-sm', className)}
       {...props}
     />
   );
 }
 
 /**
+ * Card description subcomponent.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The card description element.
  */
-function CardDescription({ className, ...props }: React.ComponentProps<'div'>) {
+function CardDescription({ className, ...props }: ComponentProps<'div'>) {
   return <div data-slot="card-description" className={cn('text-muted-foreground text-sm', className)} {...props} />;
 }
 
 /**
+ * Card action subcomponent — positioned in the top-right of the header.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The card action element.
  */
-function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
+function CardAction({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-action"
@@ -80,20 +95,26 @@ function CardAction({ className, ...props }: React.ComponentProps<'div'>) {
 }
 
 /**
+ * Card content section.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The card content element.
  */
-function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
+function CardContent({ className, ...props }: ComponentProps<'div'>) {
   return <div data-slot="card-content" className={cn('px-4 group-data-[size=sm]/card:px-3', className)} {...props} />;
 }
 
 /**
+ * Card footer section.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The card footer element.
  */
-function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
+function CardFooter({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       data-slot="card-footer"
