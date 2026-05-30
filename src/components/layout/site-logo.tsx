@@ -4,16 +4,18 @@ import Link from 'next/link';
  * InstaPaws site logo — muted orange paw print + text.
  * Not playful. Serious, clean, trustworthy.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The site logo element.
  */
 export function SiteLogo({ className }: { className?: string }) {
   return (
-    <Link href="/" className={`flex items-center gap-2.5 ${className ?? ''}`} aria-label="InstaPaws — Home">
+    <Link href="/" className={`flex items-center gap-0.5 ${className ?? ''}`} aria-label="InstaPaws — Home">
       {/* Paw print icon */}
       <svg
-        viewBox="0 0 40 40"
-        className="h-8 w-8 shrink-0"
+        viewBox="0 0 40 36"
+        className="h-9 w-9 shrink-0"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
@@ -28,7 +30,7 @@ export function SiteLogo({ className }: { className?: string }) {
         <ellipse cx="8" cy="21" rx="3" ry="3.5" className="fill-[oklch(0.62_0.14_45)]" opacity="0.7" />
         <ellipse cx="32" cy="21" rx="3" ry="3.5" className="fill-[oklch(0.62_0.14_45)]" opacity="0.7" />
       </svg>
-      <span className="text-foreground text-lg font-bold tracking-tight">
+      <span className="text-foreground font-heading text-lg font-bold tracking-tight">
         Insta<span className="text-accent">Paws</span>
       </span>
     </Link>
