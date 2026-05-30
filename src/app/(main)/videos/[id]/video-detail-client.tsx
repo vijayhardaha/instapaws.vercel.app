@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { AlertTriangle, ArrowLeft, ExternalLink, ShieldCheck, MessageSquareWarning } from 'lucide-react';
 import Link from 'next/link';
 
+import { Container } from '@/components/layout/container';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -16,9 +17,12 @@ interface Props {
 }
 
 /**
+ * Video detail client component with content warning gate and report details.
  *
- * @param root0
- * @param root0.video
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.video - The video report data to display.
+ *
+ * @returns {JSX.Element} The video detail page with content warning gate.
  */
 export function VideoDetailClient({ video }: Props) {
   const [warningAccepted, setWarningAccepted] = useState(false);
@@ -26,18 +30,18 @@ export function VideoDetailClient({ video }: Props) {
   return (
     <>
       <div className="border-border bg-background border-b">
-        <div className="mx-auto max-w-4xl px-4 py-3 sm:px-6 lg:px-8">
+        <Container className="py-3">
           <Button asChild variant="ghost" size="sm">
             <Link href="/videos">
               <ArrowLeft className="mr-1 h-4 w-4" />
               Back to Video Library
             </Link>
           </Button>
-        </div>
+        </Container>
       </div>
 
       <section className="bg-background flex-1">
-        <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+        <Container className="py-3">
           <div className="mb-6">
             <div className="flex flex-wrap items-center gap-2">
               <Badge variant={video.isGraphic ? 'destructive' : 'secondary'} className="text-sm">
@@ -66,11 +70,11 @@ export function VideoDetailClient({ video }: Props) {
               <CardContent className="flex flex-col items-center py-16 text-center">
                 <AlertTriangle className="text-destructive h-12 w-12" />
                 <h2 className="mt-4 text-xl font-bold">Content Warning</h2>
-                <p className="text-muted-foreground mx-auto mt-2 max-w-md text-sm">
+                <p className="text-muted-foreground mt-2 text-sm">
                   This video may contain disturbing content showing harm to dogs. Viewer discretion is strongly advised.
                 </p>
                 {video.isGraphic && (
-                  <p className="text-destructive mt-2 text-sm font-medium">
+                  <p className="text-destructive mt-2 text-sm font-semibold">
                     This video has been marked as potentially graphic.
                   </p>
                 )}
@@ -117,12 +121,12 @@ export function VideoDetailClient({ video }: Props) {
                 <dl className="mt-4 space-y-3 text-sm">
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">Current Status</dt>
-                    <dd className="font-medium">{REPORT_STATUS_LABELS[video.status]}</dd>
+                    <dd className="font-semibold">{REPORT_STATUS_LABELS[video.status]}</dd>
                   </div>
                   <Separator />
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">Reported to Instagram</dt>
-                    <dd className="font-medium">
+                    <dd className="font-semibold">
                       {video.reportedToInstagramAt
                         ? new Date(video.reportedToInstagramAt).toLocaleDateString()
                         : 'Not yet reported'}
@@ -131,12 +135,12 @@ export function VideoDetailClient({ video }: Props) {
                   <Separator />
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">Instagram Response</dt>
-                    <dd className="font-medium">{video.instagramResponse ?? 'Awaiting response'}</dd>
+                    <dd className="font-semibold">{video.instagramResponse ?? 'Awaiting response'}</dd>
                   </div>
                   <Separator />
                   <div className="flex justify-between">
                     <dt className="text-muted-foreground">Views</dt>
-                    <dd className="font-medium">{video.viewCount}</dd>
+                    <dd className="font-semibold">{video.viewCount}</dd>
                   </div>
                 </dl>
                 <div className="mt-6">
@@ -167,7 +171,7 @@ export function VideoDetailClient({ video }: Props) {
             InstaPaws does not host this video. It is embedded from Instagram for reporting and awareness purposes under
             fair use.
           </p>
-        </div>
+        </Container>
       </section>
     </>
   );
