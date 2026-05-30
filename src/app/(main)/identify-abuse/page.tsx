@@ -1,11 +1,12 @@
 import { AlertTriangle, Hand, Droplets, Swords, Bone, Home, MapPin, Flag, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 
-import { SectionHeading } from '@/components/shared/section-heading';
+import { Container } from '@/components/layout/container';
+import { CtaSection } from '@/components/shared/cta-section';
+import { HeroBanner } from '@/components/shared/hero-banner';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { NoiseBackground } from '@/components/ui/noise-background';
 
 export const metadata: Metadata = {
   title: 'How to Identify Abuse',
@@ -90,24 +91,21 @@ const ABUSE_TYPES = [
 ];
 
 /**
+ * Identify Abuse page — abuse types, signs, and CTAs.
  *
+ * @returns {unknown} The identify-abuse page content.
  */
 export default function IdentifyAbusePage() {
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="Education"
-            title="How to Identify Dog Abuse"
-            description="Understanding the types of abuse helps you report more effectively. Learn the signs so you can take action."
-            className="text-primary-foreground"
-          />
-        </div>
-      </section>
+      <HeroBanner
+        tag="Education"
+        title="How to Identify Dog Abuse"
+        description="Understanding the types of abuse helps you report more effectively. Learn the signs so you can take action."
+      />
 
       <section className="bg-destructive/10 border-destructive/20 border-b">
-        <div className="mx-auto flex max-w-6xl items-start gap-4 px-4 py-6 sm:px-6 lg:px-8">
+        <Container className="flex items-start gap-4 py-6">
           <AlertTriangle className="text-destructive mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
           <div>
             <p className="text-destructive font-semibold">Content Warning</p>
@@ -116,71 +114,65 @@ export default function IdentifyAbusePage() {
               authorities first.
             </p>
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-background">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {ABUSE_TYPES.map((type) => (
-              <Card key={type.title} className="flex flex-col">
-                <CardHeader>
-                  <div className="flex items-center justify-between">
-                    <div className="bg-accent/10 flex h-10 w-10 items-center justify-center rounded-full">
-                      <type.icon className="text-accent h-5 w-5" aria-hidden="true" />
+      <section className="bg-background relative">
+        <NoiseBackground
+          gradientColors={['rgb(220, 80, 80)', 'rgb(180, 60, 60)', 'rgb(240, 120, 80)']}
+          noiseIntensity={0.08}
+          speed={0.05}
+          className="py-16"
+        >
+          <Container>
+            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+              {ABUSE_TYPES.map((type) => (
+                <Card key={type.title} className="flex flex-col">
+                  <CardHeader>
+                    <div className="flex items-center justify-between">
+                      <div className="bg-accent/10 flex h-10 w-10 items-center justify-center rounded-full">
+                        <type.icon className="text-accent h-5 w-5" aria-hidden="true" />
+                      </div>
+                      <Badge variant={type.severity === 'Critical' ? 'destructive' : 'secondary'} className="text-xs">
+                        {type.severity}
+                      </Badge>
                     </div>
-                    <Badge variant={type.severity === 'Critical' ? 'destructive' : 'secondary'} className="text-xs">
-                      {type.severity}
-                    </Badge>
-                  </div>
-                  <h3 className="mt-4 text-lg font-semibold">{type.title}</h3>
-                  <p className="text-muted-foreground text-sm">{type.description}</p>
-                </CardHeader>
-                <CardContent className="flex-1">
-                  <p className="text-muted-foreground mb-3 text-xs font-semibold tracking-wider uppercase">
-                    Signs to look for:
-                  </p>
-                  <ul className="space-y-2">
-                    {type.signs.map((sign, i) => (
-                      <li key={i} className="text-muted-foreground flex items-start gap-2 text-sm">
-                        <span className="bg-accent/50 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
-                        {sign}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+                    <h3 className="mt-4 text-lg font-semibold">{type.title}</h3>
+                    <p className="text-muted-foreground text-sm">{type.description}</p>
+                  </CardHeader>
+                  <CardContent className="flex-1">
+                    <p className="text-muted-foreground mb-3 text-xs font-semibold tracking-wider uppercase">
+                      Signs to look for:
+                    </p>
+                    <ul className="space-y-2">
+                      {type.signs.map((sign, i) => (
+                        <li key={i} className="text-muted-foreground flex items-start gap-2 text-sm">
+                          <span className="bg-accent/50 mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full" />
+                          {sign}
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </Container>
+        </NoiseBackground>
       </section>
 
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Spotted the Signs? Take Action Now.</h2>
-          <p className="text-primary-foreground/80 mx-auto mt-4 max-w-xl">
-            If you have witnessed any of these signs on Instagram, report it immediately.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="/submit">
-                <Flag className="mr-2 h-4 w-4" />
-                Report a Video
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
-            >
-              <Link href="/rescue">
-                Full Action Guide <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title="Spotted the Signs? Take Action Now."
+        description="If you have witnessed any of these signs on Instagram, report it immediately."
+        buttons={[
+          { label: 'Report a Video', href: '/submit', icon: <Flag className="mr-2 h-4 w-4" /> },
+          {
+            label: 'Full Action Guide',
+            href: '/rescue',
+            icon: <ArrowRight className="ml-2 h-4 w-4" />,
+            variant: 'outline',
+          },
+        ]}
+      />
     </>
   );
 }
