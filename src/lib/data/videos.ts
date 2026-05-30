@@ -13,7 +13,9 @@ type DbVideo = Database['public']['Tables']['videos']['Row'];
 /**
  * Convert DB row → app VideoReport type.
  *
- * @param row
+ * @param {DbVideo} row - Database video row.
+ *
+ * @returns {VideoReport} Application-level video report object.
  */
 function dbVideoToReport(row: DbVideo): VideoReport {
   return {
@@ -40,7 +42,9 @@ function dbVideoToReport(row: DbVideo): VideoReport {
 /**
  * Convert DB success_story row → app SuccessStory type.
  *
- * @param row
+ * @param {Database['public']['Tables']['success_stories']['Row']} row - Database success story row.
+ *
+ * @returns {SuccessStory} Application-level success story object.
  */
 function dbStoryToStory(row: Database['public']['Tables']['success_stories']['Row']): SuccessStory {
   return {
@@ -66,8 +70,11 @@ export interface VideoFilters {
 
 /**
  * Fetch videos with filters, search, sort, and pagination.
+ * Falls back to mock data if Supabase is not configured.
  *
- * @param filters
+ * @param {VideoFilters} filters - Filter, search, sort, and pagination options.
+ *
+ * @returns {Promise<{ videos: VideoReport[]; total: number }>} Object with filtered videos array and total count.
  */
 export async function fetchVideos(filters: VideoFilters = {}): Promise<{ videos: VideoReport[]; total: number }> {
   if (!isSupabaseConfigured()) {
@@ -108,9 +115,12 @@ export async function fetchVideos(filters: VideoFilters = {}): Promise<{ videos:
 }
 
 /**
- * Fetch a single video by ID.
+ * Fetch a single video by its ID.
+ * Falls back to mock data if Supabase is not configured.
  *
- * @param id
+ * @param {string} id - Video report ID to fetch.
+ *
+ * @returns {Promise<VideoReport | null>} The video report, or null if not found.
  */
 export async function fetchVideoById(id: string): Promise<VideoReport | null> {
   if (!isSupabaseConfigured()) {
@@ -130,8 +140,11 @@ export async function fetchVideoById(id: string): Promise<VideoReport | null> {
 
 /**
  * Fetch recent approved videos for the homepage.
+ * Falls back to mock data if Supabase is not configured.
  *
- * @param count
+ * @param {number} count - Number of recent videos to return (default 3).
+ *
+ * @returns {Promise<VideoReport[]>} Array of recent approved video reports.
  */
 export async function fetchRecentVideos(count = 3): Promise<VideoReport[]> {
   if (!isSupabaseConfigured()) {
@@ -154,7 +167,12 @@ export async function fetchRecentVideos(count = 3): Promise<VideoReport[]> {
   }
 }
 
-/** Fetch all unmoderated videos. */
+/**
+ * Fetch all unmoderated videos for moderation review.
+ * Falls back to mock data if Supabase is not configured.
+ *
+ * @returns {Promise<VideoReport[]>} Array of unmoderated video reports.
+ */
 export async function fetchUnmoderatedVideos(): Promise<VideoReport[]> {
   if (!isSupabaseConfigured()) {
     return getMockVideos().filter((v) => v.moderationStatus === 'unmoderated');
@@ -175,7 +193,12 @@ export async function fetchUnmoderatedVideos(): Promise<VideoReport[]> {
   }
 }
 
-/** Fetch all success stories. */
+/**
+ * Fetch all success stories ordered by date (newest first).
+ * Falls back to mock data if Supabase is not configured.
+ *
+ * @returns {Promise<SuccessStory[]>} Array of success stories.
+ */
 export async function fetchSuccessStories(): Promise<SuccessStory[]> {
   if (!isSupabaseConfigured()) {
     return MOCK_SUCCESS_STORIES;
