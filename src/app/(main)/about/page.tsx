@@ -2,10 +2,11 @@ import { ShieldCheck, Users, Scale, Flag, ArrowRight, Heart, Eye, Ban } from 'lu
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { Container } from '@/components/layout/container';
+import { CtaSection } from '@/components/shared/cta-section';
+import { HeroBanner } from '@/components/shared/hero-banner';
 import { SectionHeading } from '@/components/shared/section-heading';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
 import { SITE } from '@/lib/constants';
 
 export const metadata: Metadata = {
@@ -52,24 +53,21 @@ const BOUNDARIES = [
 ];
 
 /**
+ * About page — mission, principles, moderation process, boundaries.
  *
+ * @returns {unknown} The about page content.
  */
 export default function AboutPage() {
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="About InstaPaws"
-            title="A Compassion Hub for Dogs in Distress"
-            description={`${SITE.name} exists because animals cannot speak for themselves. We archive, expose, and take action against Instagram videos showing cruelty and abuse toward dogs.`}
-            className="text-primary-foreground"
-          />
-        </div>
-      </section>
+      <HeroBanner
+        tag="About InstaPaws"
+        title="A Compassion Hub for Dogs in Distress"
+        description={`${SITE.name} exists because animals cannot speak for themselves. We archive, expose, and take action against Instagram videos showing cruelty and abuse toward dogs.`}
+      />
 
       <section className="border-border bg-background border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Our Mission"
             title="Why We Built This"
@@ -86,11 +84,11 @@ export default function AboutPage() {
               the most effective tools for accountability.
             </p>
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-muted/30 border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading tag="Editorial Policy" title="Our Principles" />
           <div className="mt-10 grid gap-6 sm:grid-cols-2">
             {PRINCIPLES.map((p) => (
@@ -109,11 +107,11 @@ export default function AboutPage() {
               </Card>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-background border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Moderation"
             title="How We Review Submissions"
@@ -129,11 +127,11 @@ export default function AboutPage() {
               </li>
             ))}
           </ol>
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-destructive/5 border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading tag="Boundaries" title="What We Do Not Do" />
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
             {BOUNDARIES.map((item) => (
@@ -143,40 +141,21 @@ export default function AboutPage() {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-16 text-center sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">Join the Fight Against Animal Cruelty</h2>
-          <p className="text-primary-foreground/80 mx-auto mt-4 max-w-xl">
-            Report a video, sign the petition, or donate — every action counts.
-          </p>
-          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="/submit">
-                <Flag className="mr-2 h-4 w-4" />
-                Report a Video
-              </Link>
-            </Button>
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 bg-transparent"
-            >
-              <Link href="/rescue">
-                Take Action <ArrowRight className="ml-2 h-4 w-4" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <CtaSection
+        title="Join the Fight Against Animal Cruelty"
+        description="Report a video, sign the petition, or donate — every action counts."
+        buttons={[
+          { label: 'Report a Video', href: '/submit', icon: <Flag className="mr-2 h-4 w-4" /> },
+          { label: 'Take Action', href: '/rescue', icon: <ArrowRight className="ml-2 h-4 w-4" />, variant: 'outline' },
+        ]}
+      />
 
       <section className="bg-muted/50">
-        <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
-          <Separator className="mb-6" />
-          <p className="text-muted-foreground text-xs leading-relaxed">
+        <Container className="py-16">
+          <p className="text-muted-foreground leading-relaxed">
             <strong>Legal Note:</strong> InstaPaws is independent and not affiliated with Instagram or Meta Platforms,
             Inc. All embedded content is publicly available and used under fair use. If you believe your content has
             been used improperly, please{' '}
@@ -185,7 +164,7 @@ export default function AboutPage() {
             </Link>
             .
           </p>
-        </div>
+        </Container>
       </section>
     </>
   );
