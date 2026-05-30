@@ -1,24 +1,27 @@
 'use client';
 
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import { Separator as SeparatorPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
 /**
+ * Separator / divider line.
  *
- * @param root0
- * @param root0.className
- * @param root0.orientation
- * @param root0.decorative
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.orientation - Separator orientation.
+ * @param {unknown} props.decorative - Whether the separator is purely decorative.
+ *
+ * @returns {unknown} The separator element.
  */
 function Separator({
   className,
   orientation = 'horizontal',
   decorative = true,
   ...props
-}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {
+}: ComponentProps<typeof SeparatorPrimitive.Root>) {
   return (
     <SeparatorPrimitive.Root
       data-slot="separator"
