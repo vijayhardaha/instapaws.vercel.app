@@ -1,0 +1,99 @@
+'use client';
+
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+
+interface PaginationBarProps {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}
+
+/**
+ * Generate page numbers to display with ellipsis for large page counts.
+ *
+ * @param {unknown} currentPage - The active page number.
+ * @param {unknown} totalPages - The total number of pages.
+ *
+ * @returns {unknown} Array of page numbers and ellipsis markers.
+ */
+function getPageNumbers(currentPage: number, totalPages: number): (number | 'ellipsis')[] {
+  const pages: (number | 'ellipsis')[] = [];
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) pages.push(i);
+  } else {
+    pages.push(1);
+    if (currentPage > 3) pages.push('ellipsis');
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+    for (let i = start; i <= end; i++) pages.push(i);
+    if (currentPage < totalPages - 2) pages.push('ellipsis');
+    pages.push(totalPages);
+  }
+  return pages;
+}
+
+/**
+ * Pagination bar with page numbers, previous/next buttons, and ellipsis.
+ *
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.currentPage - The active page number.
+ * @param {unknown} props.totalPages - The total number of pages.
+ * @param {unknown} props.onPageChange - Callback when page changes.
+ *
+ * @returns {unknown} The pagination bar element, or null if totalPages <= 1.
+ */
+export function PaginationBar({ currentPage, totalPages, onPageChange }: PaginationBarProps) {
+  if (totalPages <= 1) return null;
+
+  return (
+    <nav className="mt-10 flex items-center justify-center gap-1" aria-label="Pagination">
+      <Button
+        variant="ghost"
+        size="sm"
+        disabled={currentPage <= 1}
+        onClick={() => onPageChange(currentPage - 1)}
+        aria-label="Previous page"
+        className="px-2"
+      >
+        <ChevronLeft className="h-4 w-4" />
+        <span className="ml-1 hidden sm:inline">Previous</span>
+      </Button>
+
+      <div className="flex items-center gap-0.5">
+        {getPageNumbers(currentPage, totalPages).map((p, i) =>
+          p === 'ellipsis' ? (
+            <span key={`e-${i}`} className="text-muted-foreground flex h-8 w-8 items-center justify-center text-sm">
+              &hellip;
+            </span>
+          ) : (
+            <Button
+              key={p}
+              variant={p === currentPage ? 'outline' : 'ghost'}
+              size="sm"
+              className="h-8 w-8 p-0 text-sm"
+              onClick={() => onPageChange(p)}
+              aria-label={`Page ${p}`}
+              aria-current={p === currentPage ? 'page' : undefined}
+            >
+              {p}
+            </Button>
+          )
+        )}
+      </div>
+
+      <Button
+        variant="ghost"
+        size="sm"
+        disabled={currentPage >= totalPages}
+        onClick={() => onPageChange(currentPage + 1)}
+        aria-label="Next page"
+        className="px-2"
+      >
+        <span className="mr-1 hidden sm:inline">Next</span>
+        <ChevronRight className="h-4 w-4" />
+      </Button>
+    </nav>
+  );
+}
