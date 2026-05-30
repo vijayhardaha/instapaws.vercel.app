@@ -28,11 +28,6 @@ const nextConfig: NextConfig = {
   // ---- Security & headers ----
   // Remove `X-Powered-By` header for a slightly improved security posture
   poweredByHeader: false,
-
-  // ---- Redirects ----
-  async redirects() {
-    return [{ source: '/thumbnail.png', destination: '/preview.png', permanent: true }];
-  },
 };
 
 export default nextConfig;
