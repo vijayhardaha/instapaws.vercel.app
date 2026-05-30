@@ -1,8 +1,10 @@
+import type { ReactNode } from 'react';
+
 import { cn } from '@/lib/utils';
 
 interface SectionHeadingProps {
   tag?: string;
-  title: string;
+  title: ReactNode;
   description?: string;
   className?: string;
   align?: 'left' | 'center';
@@ -11,19 +13,21 @@ interface SectionHeadingProps {
 /**
  * Reusable section heading with optional tag label and description.
  *
- * @param root0
- * @param root0.tag
- * @param root0.title
- * @param root0.description
- * @param root0.className
- * @param root0.align
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.tag - Optional tag label displayed above the title.
+ * @param {unknown} props.title - Main heading content.
+ * @param {unknown} props.description - Optional descriptive text below the title.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.align - Text alignment. Default 'left'.
+ *
+ * @returns {unknown} Section heading with optional tag and description.
  */
 export function SectionHeading({ tag, title, description, className, align = 'left' }: SectionHeadingProps) {
   return (
-    <div className={cn('max-w-2xl', align === 'center' && 'mx-auto text-center', className)}>
+    <div className={cn(align === 'center' && 'mx-auto text-center', className)}>
       {tag && <p className="text-accent mb-2 text-xs font-semibold tracking-widest uppercase">{tag}</p>}
-      <h2 className="text-foreground text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>
-      {description && <p className="text-muted-foreground mt-3 text-base leading-relaxed">{description}</p>}
+      <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">{title}</h2>
+      {description && <p className="mt-3 text-base leading-relaxed opacity-80">{description}</p>}
     </div>
   );
 }
