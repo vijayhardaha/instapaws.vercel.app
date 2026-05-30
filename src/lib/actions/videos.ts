@@ -5,7 +5,9 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { revalidatePath } from 'next/cache';
+import { headers } from 'next/headers';
 
+import { checkSubmissionRate, getClientIp, rateLimitMessage } from '@/lib/rate-limiter';
 import { isSupabaseConfigured, supabaseUrl, supabaseServiceRoleKey } from '@/lib/supabase/config';
 import type { Database } from '@/lib/supabase/database.types';
 
@@ -21,7 +23,7 @@ interface ActionResult {
 function getDb() {
   if (!isSupabaseConfigured()) return null;
 
-  return createClient(supabaseUrl, supabaseServiceRoleKey || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || '', {
+  return createClient(supabaseUrl, supabaseServiceRoleKey || process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY || '', {
     auth: { persistSession: false },
   }) as any;
 }
@@ -34,9 +36,19 @@ function extractInstagramUrl(url: string) {
 /**
  * Submit a new video report (public action).
  *
- * @param formData
+ * @param {FormData} formData - Form data with instagram_url, abuse_type, description, and optional location.
+ *
+ * @returns {Promise<ActionResult>} Result object indicating success or failure with optional error message.
  */
 export async function submitVideo(formData: FormData): Promise<ActionResult> {
+  // Server-side rate limit
+  const headersList = await headers();
+  const clientIp = getClientIp(headersList);
+  const cooldown = checkSubmissionRate(clientIp);
+  if (cooldown !== null) {
+    return { success: false, error: rateLimitMessage(cooldown) };
+  }
+
   const db = getDb();
   if (!db) return { success: true, data: { id: `mock-${Date.now()}` } };
 
@@ -68,11 +80,13 @@ export async function submitVideo(formData: FormData): Promise<ActionResult> {
 }
 
 /**
- * Update moderation status (auth required).
+ * Update video moderation status (auth required).
  *
- * @param id
- * @param status
- * @param notes
+ * @param {string} id - Video report ID.
+ * @param {Database['public']['Tables']['videos']['Row']['moderation_status']} status - New moderation status.
+ * @param {string} [notes] - Optional moderator notes.
+ *
+ * @returns {Promise<ActionResult>} Result object indicating success or failure.
  */
 export async function updateVideoModeration(
   id: string,
@@ -97,9 +111,11 @@ export async function updateVideoModeration(
 }
 
 /**
- * Increment view count for a video.
+ * Increment the view count for a video by one.
  *
- * @param id
+ * @param {string} id - Video report ID to increment.
+ *
+ * @returns {Promise<ActionResult>} Result object indicating success.
  */
 export async function incrementViewCount(id: string): Promise<ActionResult> {
   const db = getDb();
@@ -119,7 +135,11 @@ export async function incrementViewCount(id: string): Promise<ActionResult> {
   return { success: true };
 }
 
-/** Get aggregate video stats. */
+/**
+ * Get aggregate video statistics (flagged count, removed count, dogs rescued).
+ *
+ * @returns {Promise<ActionResult>} Result containing stats object with flagged, removed, and rescued counts.
+ */
 export async function getVideoStats(): Promise<ActionResult> {
   const db = getDb();
   if (!db) return { success: true, data: { flagged: 47, removed: 47, rescued: 3 } };
@@ -141,7 +161,11 @@ export async function getVideoStats(): Promise<ActionResult> {
   }
 }
 
-/** Fetch unmoderated videos for moderation queue. */
+/**
+ * Fetch all unmoderated videos for the moderation queue.
+ *
+ * @returns {Promise<{ success: boolean; data: Database['public']['Tables']['videos']['Row'][]; error?: string }>} Result with array of unmoderated videos or error.
+ */
 export async function fetchUnmoderatedVideos() {
   const db = getDb();
   if (!db) return { success: true, data: [] };
