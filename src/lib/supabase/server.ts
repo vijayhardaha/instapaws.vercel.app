@@ -6,18 +6,20 @@ import { createServerClient } from '@supabase/ssr';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { cookies } from 'next/headers';
 
-import { isSupabaseConfigured, supabaseUrl, supabaseAnonKey } from './config';
+import { isSupabaseConfigured, supabaseUrl, supabasePublishableKey } from './config';
 import type { Database } from './database.types';
 
 export type SupabaseServerClient = ReturnType<typeof createSupabaseClient<Database>>;
 
 /**
+ * Create a Supabase server client using cookie-based auth.
  *
+ * @returns {Promise<SupabaseServerClient>} Configured Supabase server client instance.
  */
 export async function createClient(): Promise<SupabaseServerClient> {
   const cookieStore = await cookies();
 
-  return createServerClient<Database>(supabaseUrl, supabaseAnonKey, {
+  return createServerClient<Database>(supabaseUrl, supabasePublishableKey, {
     cookies: {
       getAll() {
         return cookieStore.getAll().map(({ name, value }) => ({ name, value }));
@@ -33,7 +35,11 @@ export async function createClient(): Promise<SupabaseServerClient> {
   });
 }
 
-/** Get a Supabase server client or null if not configured. */
+/**
+ * Get a Supabase server client, returning null if Supabase is not configured.
+ *
+ * @returns {Promise<SupabaseServerClient | null>} The Supabase client, or null if not configured.
+ */
 export async function getSupabaseServerClient() {
   if (!isSupabaseConfigured()) return null;
   return createClient();
