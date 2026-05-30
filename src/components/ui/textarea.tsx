@@ -1,13 +1,16 @@
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import { cn } from '@/lib/utils';
 
 /**
+ * Textarea input component.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The textarea element.
  */
-function Textarea({ className, ...props }: React.ComponentProps<'textarea'>) {
+function Textarea({ className, ...props }: ComponentProps<'textarea'>) {
   return (
     <textarea
       data-slot="textarea"
