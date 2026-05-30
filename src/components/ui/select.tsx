@@ -1,6 +1,6 @@
 'use client';
 
-import * as React from 'react';
+import { type ComponentProps } from 'react';
 
 import { ChevronDownIcon, CheckIcon, ChevronUpIcon } from 'lucide-react';
 import { Select as SelectPrimitive } from 'radix-ui';
@@ -8,43 +8,43 @@ import { Select as SelectPrimitive } from 'radix-ui';
 import { cn } from '@/lib/utils';
 
 /**
+ * Select dropdown component.
  *
- * @param root0
+ * @param {unknown} props - Component props forwarded to the Radix root.
+ *
+ * @returns {unknown} The select component.
  */
-function Select({ ...props }: React.ComponentProps<typeof SelectPrimitive.Root>) {
+function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
   return <SelectPrimitive.Root data-slot="select" {...props} />;
 }
 
 /**
+ * Select value display component.
  *
- * @param root0
- * @param root0.className
- */
-function SelectGroup({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Group>) {
-  return <SelectPrimitive.Group data-slot="select-group" className={cn('scroll-my-1 p-1', className)} {...props} />;
-}
-
-/**
+ * @param {unknown} props - Component props forwarded to the Radix value.
  *
- * @param root0
+ * @returns {unknown} The select value element.
  */
-function SelectValue({ ...props }: React.ComponentProps<typeof SelectPrimitive.Value>) {
+function SelectValue({ ...props }: ComponentProps<typeof SelectPrimitive.Value>) {
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
 /**
+ * Select trigger button.
  *
- * @param root0
- * @param root0.className
- * @param root0.size
- * @param root0.children
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.size - Trigger size variant.
+ * @param {unknown} props.children - Child content.
+ *
+ * @returns {unknown} The select trigger element.
  */
 function SelectTrigger({
   className,
   size = 'default',
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger> & { size?: 'sm' | 'default' }) {
+}: ComponentProps<typeof SelectPrimitive.Trigger> & { size?: 'sm' | 'default' }) {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
@@ -64,12 +64,15 @@ function SelectTrigger({
 }
 
 /**
+ * Select dropdown content.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
- * @param root0.position
- * @param root0.align
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.children - Child content (option items).
+ * @param {unknown} props.position - Positioning strategy.
+ * @param {unknown} props.align - Content alignment.
+ *
+ * @returns {unknown} The select content element.
  */
 function SelectContent({
   className,
@@ -77,7 +80,7 @@ function SelectContent({
   position = 'item-aligned',
   align = 'center',
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Content>) {
+}: ComponentProps<typeof SelectPrimitive.Content>) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -110,27 +113,15 @@ function SelectContent({
 }
 
 /**
+ * Select option item.
  *
- * @param root0
- * @param root0.className
- */
-function SelectLabel({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Label>) {
-  return (
-    <SelectPrimitive.Label
-      data-slot="select-label"
-      className={cn('text-muted-foreground px-1.5 py-1 text-xs', className)}
-      {...props}
-    />
-  );
-}
-
-/**
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.children - Item content.
  *
- * @param root0
- * @param root0.className
- * @param root0.children
+ * @returns {unknown} The select item element.
  */
-function SelectItem({ className, children, ...props }: React.ComponentProps<typeof SelectPrimitive.Item>) {
+function SelectItem({ className, children, ...props }: ComponentProps<typeof SelectPrimitive.Item>) {
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
@@ -151,26 +142,14 @@ function SelectItem({ className, children, ...props }: React.ComponentProps<type
 }
 
 /**
+ * Select scroll up button.
  *
- * @param root0
- * @param root0.className
- */
-function SelectSeparator({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.Separator>) {
-  return (
-    <SelectPrimitive.Separator
-      data-slot="select-separator"
-      className={cn('bg-border pointer-events-none -mx-1 my-1 h-px', className)}
-      {...props}
-    />
-  );
-}
-
-/**
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
  *
- * @param root0
- * @param root0.className
+ * @returns {unknown} The scroll up button element.
  */
-function SelectScrollUpButton({ className, ...props }: React.ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
+function SelectScrollUpButton({ className, ...props }: ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
   return (
     <SelectPrimitive.ScrollUpButton
       data-slot="select-scroll-up-button"
@@ -186,14 +165,14 @@ function SelectScrollUpButton({ className, ...props }: React.ComponentProps<type
 }
 
 /**
+ * Select scroll down button.
  *
- * @param root0
- * @param root0.className
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ *
+ * @returns {unknown} The scroll down button element.
  */
-function SelectScrollDownButton({
-  className,
-  ...props
-}: React.ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
+function SelectScrollDownButton({ className, ...props }: ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
   return (
     <SelectPrimitive.ScrollDownButton
       data-slot="select-scroll-down-button"
@@ -208,15 +187,4 @@ function SelectScrollDownButton({
   );
 }
 
-export {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectScrollDownButton,
-  SelectScrollUpButton,
-  SelectSeparator,
-  SelectTrigger,
-  SelectValue,
-};
+export { Select, SelectContent, SelectItem, SelectTrigger, SelectValue };
