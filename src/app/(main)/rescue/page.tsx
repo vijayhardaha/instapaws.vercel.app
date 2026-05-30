@@ -1,8 +1,10 @@
-import { AlertTriangle, PhoneCall, FileText, ShieldCheck, Flag, BookOpen } from 'lucide-react';
+import { PhoneCall, FileText, ShieldCheck, Flag, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { SectionHeading } from '@/components/shared/section-heading';
+import { Container } from '@/components/layout/container';
+import { HeroBanner } from '@/components/shared/hero-banner';
+import { WarningBanner } from '@/components/shared/warning-banner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 
@@ -77,36 +79,23 @@ const STEPS = [
 ];
 
 /**
+ * Rescue page — step-by-step action guide.
  *
+ * @returns {unknown} The rescue page content.
  */
 export default function RescuePage() {
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="Action Guide"
-            title="What to Do If You See Dog Abuse"
-            description="A step-by-step guide to reporting, documenting, and escalating Instagram videos showing cruelty toward dogs."
-            className="text-primary-foreground"
-          />
-        </div>
-      </section>
+      <HeroBanner
+        tag="Action Guide"
+        title="What to Do If You See Dog Abuse"
+        description="A step-by-step guide to reporting, documenting, and escalating Instagram videos showing cruelty toward dogs."
+      />
 
-      <section className="bg-destructive/10 border-destructive/20 border-b">
-        <div className="mx-auto max-w-6xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-3">
-            <AlertTriangle className="text-destructive mt-0.5 h-5 w-5 shrink-0" />
-            <p className="text-destructive text-sm font-medium">
-              If a dog is in immediate danger, call local authorities immediately.{' '}
-              <strong>Do not engage the person posting the content.</strong>
-            </p>
-          </div>
-        </div>
-      </section>
+      <WarningBanner title="If a dog is in immediate danger, call local authorities immediately. Do not engage the person posting the content." />
 
       <section className="bg-background flex-1">
-        <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+        <Container className="py-12">
           <div className="space-y-8">
             {STEPS.map((step) => (
               <Card
@@ -141,11 +130,11 @@ export default function RescuePage() {
               </Card>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-muted/30 border-t">
-        <div className="mx-auto max-w-6xl px-4 py-12 text-center sm:px-6 lg:px-8">
+        <Container className="py-12 text-center">
           <h2 className="text-2xl font-bold">Ready to Take Action?</h2>
           <p className="text-muted-foreground mx-auto mt-3 max-w-lg text-sm">
             Every report counts. If you have seen something, do not look away.
@@ -164,7 +153,7 @@ export default function RescuePage() {
               </Link>
             </Button>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );
