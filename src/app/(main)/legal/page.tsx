@@ -2,7 +2,7 @@ import { Scale, FileText, Shield, AlertTriangle } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import { SectionHeading } from '@/components/shared/section-heading';
+import { HeroBanner } from '@/components/shared/hero-banner';
 import { Separator } from '@/components/ui/separator';
 import { SITE } from '@/lib/constants';
 
@@ -37,9 +37,7 @@ const SECTIONS = [
     title: 'DMCA Policy',
     content: [
       'InstaPaws respects the intellectual property rights of others and expects the same from our users.',
-      'If you believe that content embedded on our site infringes your copyright, you may submit a DMCA takedown request to '
-        + SITE.email
-        + '.',
+      `If you believe that content embedded on our site infringes your copyright, you may submit a DMCA takedown request to ${SITE.email}.`,
       'Your request must include: identification of the copyrighted work, the URL of the infringing content, your contact information, and a good-faith statement.',
       'We will review all DMCA requests promptly and remove or disable access to the content if a valid claim is made.',
     ],
@@ -57,24 +55,21 @@ const SECTIONS = [
 ];
 
 /**
+ * Legal page — terms, disclaimers, policies.
  *
+ * @returns {unknown} The legal page content.
  */
 export default function LegalPage() {
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
-          <SectionHeading
-            tag="Legal"
-            title="Terms, Disclaimer & Policies"
-            description="Important legal information about using InstaPaws. Please read carefully."
-            className="text-primary-foreground"
-          />
-        </div>
-      </section>
+      <HeroBanner
+        tag="Legal"
+        title="Terms, Disclaimer & Policies"
+        description="Important legal information about using InstaPaws. Please read carefully."
+      />
 
       <section className="bg-background">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <div className="px-4 py-16 sm:px-6 lg:px-8">
           <div className="space-y-12">
             {SECTIONS.map((section) => (
               <article key={section.title} id={section.title.toLowerCase().replace(/\s+/g, '-')}>
