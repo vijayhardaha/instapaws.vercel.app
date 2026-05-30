@@ -1,9 +1,11 @@
 'use client';
 
-import { useState, useTransition } from 'react';
+import { useState, useTransition, type SubmitEvent } from 'react';
 
 import { AlertTriangle, ShieldCheck, Send, CheckCircle, Loader2 } from 'lucide-react';
+import Link from 'next/link';
 
+import { Container } from '@/components/layout/container';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -25,7 +27,14 @@ const ABUSE_TYPES: AbuseType[] = [
   'other',
 ];
 
-/** Anonymized video submission form. */
+const RATE_LIMIT_MS = 30_000; // 30-second cooldown between submissions
+const RATE_LIMIT_KEY = 'instapaws-last-submit';
+
+/**
+ * Anonymized video submission form.
+ *
+ * @returns {JSX.Element} The submission form or success state.
+ */
 export function SubmitFormClient() {
   const [submitted, setSubmitted] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -34,10 +43,22 @@ export function SubmitFormClient() {
   const [abuseType, setAbuseType] = useState('');
   const [description, setDescription] = useState('');
   const [location, setLocation] = useState('');
+  const [referenceId] = useState(() => Math.random().toString(36).slice(2, 10).toUpperCase());
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: SubmitEvent) => {
     e.preventDefault();
     setError('');
+
+    // Rate limit check
+    const lastSubmit = localStorage.getItem(RATE_LIMIT_KEY);
+    if (lastSubmit) {
+      const elapsed = Date.now() - Number(lastSubmit);
+      if (elapsed < RATE_LIMIT_MS) {
+        const remaining = Math.ceil((RATE_LIMIT_MS - elapsed) / 1000);
+        setError(`Please wait ${remaining} second${remaining !== 1 ? 's' : ''} before submitting again.`);
+        return;
+      }
+    }
 
     const formData = new FormData();
     formData.set('instagram_url', instagramUrl);
@@ -48,6 +69,7 @@ export function SubmitFormClient() {
     startTransition(async () => {
       const result = await submitVideo(formData);
       if (result.success) {
+        localStorage.setItem(RATE_LIMIT_KEY, String(Date.now()));
         setSubmitted(true);
       } else {
         setError(result.error || 'Something went wrong. Please try again.');
@@ -58,20 +80,18 @@ export function SubmitFormClient() {
   if (submitted) {
     return (
       <section className="bg-background flex-1">
-        <div className="mx-auto max-w-2xl px-4 py-20 text-center sm:px-6 lg:px-8">
+        <div className="px-4 py-20 text-center sm:px-6 lg:px-8">
           <div className="bg-accent/10 mx-auto flex h-16 w-16 items-center justify-center rounded-full">
             <CheckCircle className="text-accent h-8 w-8" />
           </div>
           <h1 className="mt-6 text-2xl font-bold">Thank You for Reporting</h1>
-          <p className="text-muted-foreground mx-auto mt-4 max-w-md text-sm">
+          <p className="text-muted-foreground mt-4 text-sm">
             Your submission has been received. Our moderation team will review it within 24-48 hours. If confirmed, it
             will be added to the video library.
           </p>
-          <p className="text-muted-foreground/60 mt-4 text-xs">
-            Ref: {Math.random().toString(36).slice(2, 10).toUpperCase()}
-          </p>
+          <p className="text-muted-foreground/60 mt-4 text-xs">Ref: {referenceId}</p>
           <Button asChild className="mt-8">
-            <a href="/">Return to Home</a>
+            <Link href="/">Return to Home</Link>
           </Button>
         </div>
       </section>
@@ -81,33 +101,35 @@ export function SubmitFormClient() {
   return (
     <>
       <section className="border-border bg-primary text-primary-foreground border-b">
-        <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
+        <Container className="py-12">
           <SectionHeading
             tag="Report"
             title="Submit a Video"
             description="Found an Instagram video showing harm to a dog? Submit it here. All reports are manually reviewed before publication."
             className="text-primary-foreground"
           />
-        </div>
+        </Container>
       </section>
 
       <section className="bg-destructive/5 border-destructive/20 border-b">
-        <div className="mx-auto flex max-w-2xl items-start gap-3 px-4 py-4 sm:px-6 lg:px-8">
-          <AlertTriangle className="text-destructive mt-0.5 h-5 w-5 shrink-0" />
-          <div>
-            <p className="text-destructive text-sm font-medium">Before you submit:</p>
-            <ul className="text-muted-foreground mt-1 space-y-1 text-xs">
-              <li>• Only submit videos showing genuine harm, abuse, neglect, or cruelty.</li>
-              <li>• Do not submit content as revenge or harassment — false reports may be pursued legally.</li>
-              <li>• Your submission is anonymous. We do not collect personal information.</li>
-              <li>• IP addresses are logged for abuse prevention only and are never shared.</li>
-            </ul>
+        <Container className="py-4">
+          <div className="flex items-start gap-3">
+            <AlertTriangle className="text-destructive mt-0.5 h-5 w-5 shrink-0" />
+            <div>
+              <p className="text-destructive text-sm font-semibold">Before you submit:</p>
+              <ul className="text-muted-foreground mt-1 space-y-1 text-xs">
+                <li>• Only submit videos showing genuine harm, abuse, neglect, or cruelty.</li>
+                <li>• Do not submit content as revenge or harassment — false reports may be pursued legally.</li>
+                <li>• Your submission is anonymous. We do not collect personal information.</li>
+                <li>• IP addresses are logged for abuse prevention only and are never shared.</li>
+              </ul>
+            </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="bg-background flex-1">
-        <div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 lg:px-8">
+        <Container className="py-8">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="instagram-url">Instagram Video URL *</Label>
@@ -161,7 +183,7 @@ export function SubmitFormClient() {
               <p className="text-muted-foreground text-xs">Approximate location only — do not share exact addresses.</p>
             </div>
 
-            <div className="absolute -left-[9999px]" aria-hidden="true">
+            <div className="absolute -left-2499.75" aria-hidden="true">
               <label htmlFor="website">Website</label>
               <input id="website" name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
@@ -170,7 +192,7 @@ export function SubmitFormClient() {
               <CardContent className="flex items-start gap-3 py-4">
                 <ShieldCheck className="text-accent mt-0.5 h-5 w-5 shrink-0" />
                 <div>
-                  <p className="text-sm font-medium">Your submission is anonymous</p>
+                  <p className="text-sm font-semibold">Your submission is anonymous</p>
                   <p className="text-muted-foreground mt-1 text-xs">
                     No account needed. We do not store your name, email, or personal info. IPs are hashed for abuse
                     prevention only.
@@ -191,7 +213,7 @@ export function SubmitFormClient() {
               {isPending ? 'Submitting...' : 'Submit Report'}
             </Button>
           </form>
-        </div>
+        </Container>
       </section>
     </>
   );
