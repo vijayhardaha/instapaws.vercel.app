@@ -1,7 +1,7 @@
-import { cva, type VariantProps } from 'class-variance-authority';
-import { Slot } from 'radix-ui';
+import { type ComponentProps } from 'react';
 
-import { Separator } from '@/components/ui/separator';
+import { cva, type VariantProps } from 'class-variance-authority';
+
 import { cn } from '@/lib/utils';
 
 const buttonGroupVariants = cva(
@@ -20,16 +20,19 @@ const buttonGroupVariants = cva(
 );
 
 /**
+ * Button group — horizontally or vertically groups buttons together.
  *
- * @param root0
- * @param root0.className
- * @param root0.orientation
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.orientation - Layout orientation.
+ *
+ * @returns {unknown} The button group element.
  */
 function ButtonGroup({
   className,
   orientation,
   ...props
-}: React.ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>) {
+}: ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>) {
   return (
     <div
       role="group"
@@ -41,52 +44,4 @@ function ButtonGroup({
   );
 }
 
-/**
- *
- * @param root0
- * @param root0.className
- * @param root0.asChild
- */
-function ButtonGroupText({
-  className,
-  asChild = false,
-  ...props
-}: React.ComponentProps<'div'> & { asChild?: boolean }) {
-  const Comp = asChild ? Slot.Root : 'div';
-
-  return (
-    <Comp
-      className={cn(
-        "bg-muted flex items-center gap-2 rounded-lg border px-2.5 text-sm font-medium [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4",
-        className
-      )}
-      {...props}
-    />
-  );
-}
-
-/**
- *
- * @param root0
- * @param root0.className
- * @param root0.orientation
- */
-function ButtonGroupSeparator({
-  className,
-  orientation = 'vertical',
-  ...props
-}: React.ComponentProps<typeof Separator>) {
-  return (
-    <Separator
-      data-slot="button-group-separator"
-      orientation={orientation}
-      className={cn(
-        'bg-input relative self-stretch data-horizontal:mx-px data-horizontal:w-auto data-vertical:my-px data-vertical:h-auto',
-        className
-      )}
-      {...props}
-    />
-  );
-}
-
-export { ButtonGroup, ButtonGroupSeparator, ButtonGroupText, buttonGroupVariants };
+export { ButtonGroup };
