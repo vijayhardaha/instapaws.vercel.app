@@ -10,9 +10,11 @@ import { cn } from '@/lib/utils';
  * Navigation links with active state tracking.
  * Client component to use usePathname().
  *
- * @param root0
- * @param root0.className
- * @param root0.mobile
+ * @param {unknown} props - Component props.
+ * @param {unknown} props.className - Additional CSS classes.
+ * @param {unknown} props.mobile - Whether to render in mobile mode.
+ *
+ * @returns {unknown} The navigation element.
  */
 export function NavLinks({ className, mobile }: { className?: string; mobile?: boolean }) {
   const pathname = usePathname();
@@ -28,7 +30,7 @@ export function NavLinks({ className, mobile }: { className?: string; mobile?: b
               <Link
                 href={item.href}
                 className={cn(
-                  'inline-flex items-center rounded-md px-3 py-2 text-sm font-medium transition-colors',
+                  'inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold transition-colors',
                   isActive ? 'bg-muted text-foreground' : 'text-muted-foreground hover:bg-muted hover:text-foreground',
                   mobile && 'w-full justify-start'
                 )}
