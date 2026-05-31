@@ -1,6 +1,6 @@
 'use client';
 
-import { type CSSProperties } from 'react';
+import { type CSSProperties, type JSX } from 'react';
 
 import { CircleCheckIcon, InfoIcon, TriangleAlertIcon, OctagonXIcon, Loader2Icon } from 'lucide-react';
 import { useTheme } from 'next-themes';
@@ -13,7 +13,7 @@ import { Toaster as Sonner, type ToasterProps } from 'sonner';
  *
  * @returns {JSX.Element} The toaster component.
  */
-const Toaster = ({ ...props }: ToasterProps) => {
+function Toaster({ ...props }: ToasterProps): JSX.Element {
   const { theme = 'system' } = useTheme();
 
   return (
@@ -39,6 +39,6 @@ const Toaster = ({ ...props }: ToasterProps) => {
       {...props}
     />
   );
-};
+}
 
 export { Toaster };
