@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -8,9 +8,9 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The textarea element.
+ * @returns {JSX.Element} The textarea element.
  */
-function Textarea({ className, ...props }: ComponentProps<'textarea'>) {
+function Textarea({ className, ...props }: ComponentProps<'textarea'>): JSX.Element {
   return (
     <textarea
       data-slot="textarea"
