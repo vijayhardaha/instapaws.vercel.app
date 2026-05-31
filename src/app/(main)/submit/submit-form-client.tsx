@@ -6,7 +6,7 @@ import { AlertTriangle, ShieldCheck, Send, CheckCircle, Loader2 } from 'lucide-r
 import Link from 'next/link';
 
 import { Container } from '@/components/layout/container';
-import { SectionHeading } from '@/components/shared/section-heading';
+import { HeroBanner } from '@/components/shared/hero-banner';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -100,16 +100,11 @@ export function SubmitFormClient(): JSX.Element {
 
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <Container className="py-12">
-          <SectionHeading
-            tag="Report"
-            title="Submit a Video"
-            description="Found an Instagram video showing harm to a dog? Submit it here. All reports are manually reviewed before publication."
-            className="text-primary-foreground"
-          />
-        </Container>
-      </section>
+      <HeroBanner
+        tag="Report"
+        title="Submit a Video"
+        description="Found an Instagram video showing harm to a dog? Submit it here. All reports are manually reviewed before publication."
+      />
 
       <section className="bg-destructive/5 border-destructive/20 border-b">
         <Container className="py-4">
