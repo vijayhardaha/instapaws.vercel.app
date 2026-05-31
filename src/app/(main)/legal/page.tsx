@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Scale, FileText, Shield, AlertTriangle } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -57,9 +59,9 @@ const SECTIONS = [
 /**
  * Legal page — terms, disclaimers, policies.
  *
- * @returns {unknown} The legal page content.
+ * @returns {JSX.Element} The legal page content.
  */
-export default function LegalPage() {
+export default function LegalPage(): JSX.Element {
   return (
     <>
       <HeroBanner
