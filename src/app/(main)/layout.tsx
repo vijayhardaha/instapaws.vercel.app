@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react';
 
-import { EmergencyBanner } from '@/components/layout/emergency-banner';
 import { Footer } from '@/components/layout/footer';
 import { Header } from '@/components/layout/header';
 import { SiteWarningGate } from '@/components/warnings/site-warning-gate';
@@ -18,7 +17,6 @@ export default function MainLayout({ children }: { children: ReactNode }): React
   return (
     <>
       <SiteWarningGate />
-      <EmergencyBanner />
       <Header />
       <main className="flex-1">{children}</main>
       <Footer />
