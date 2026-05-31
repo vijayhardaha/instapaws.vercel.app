@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 
 import { AlertTriangle, ArrowLeft, ExternalLink, ShieldCheck, MessageSquareWarning } from 'lucide-react';
 import Link from 'next/link';
@@ -24,7 +24,7 @@ interface Props {
  *
  * @returns {JSX.Element} The video detail page with content warning gate.
  */
-export function VideoDetailClient({ video }: Props) {
+export function VideoDetailClient({ video }: Props): JSX.Element {
   const [warningAccepted, setWarningAccepted] = useState(false);
 
   return (
