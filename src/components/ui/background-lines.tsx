@@ -1,5 +1,5 @@
 'use client';
-import { type ReactNode, useState } from 'react';
+import { type JSX, type ReactNode, useState } from 'react';
 
 import { motion } from 'motion/react';
 
@@ -16,7 +16,7 @@ import { cn } from '@/lib/utils';
  *
  * @returns {JSX.Element} The background lines component.
  */
-export const BackgroundLines = ({
+export function BackgroundLines({
   children,
   className,
   svgOptions,
@@ -24,14 +24,14 @@ export const BackgroundLines = ({
   children: ReactNode;
   className?: string;
   svgOptions?: { duration?: number };
-}) => {
+}): JSX.Element {
   return (
-    <div className={cn('h-[20rem] w-full bg-white md:h-screen dark:bg-black', className)}>
+    <div className={cn('h-80 w-full bg-white md:h-screen dark:bg-black', className)}>
       <SVG svgOptions={svgOptions} />
       {children}
     </div>
   );
-};
+}
 
 const pathVariants = {
   initial: { strokeDashoffset: 800, strokeDasharray: '50 800' },
