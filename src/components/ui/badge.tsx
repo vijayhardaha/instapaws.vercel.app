@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
@@ -31,14 +31,14 @@ const badgeVariants = cva(
  * @param {unknown} props.variant - Visual variant.
  * @param {unknown} props.asChild - Whether to render as a child of the parent.
  *
- * @returns {unknown} The badge element.
+ * @returns {JSX.Element} The badge element.
  */
 function Badge({
   className,
   variant = 'default',
   asChild = false,
   ...props
-}: ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { asChild?: boolean }) {
+}: ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { asChild?: boolean }): JSX.Element {
   const Comp = asChild ? Slot.Root : 'span';
 
   return (
