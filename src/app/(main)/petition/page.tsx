@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { PenLine, CheckCircle2, Share2 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -49,9 +51,9 @@ const PROGRESS_PERCENT = Math.round((CURRENT_SIGNATURES / SIGNATURE_GOAL) * 100)
 /**
  * Petition page — demands, progress bar, and CTAs.
  *
- * @returns {unknown} The petition page content.
+ * @returns {JSX.Element} The petition page content.
  */
-export default function PetitionPage() {
+export default function PetitionPage(): JSX.Element {
   return (
     <>
       <HeroBanner
