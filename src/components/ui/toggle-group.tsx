@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, type ComponentProps, type CSSProperties } from 'react';
+import { createContext, useContext, type ComponentProps, type CSSProperties, type JSX } from 'react';
 
 import { type VariantProps } from 'class-variance-authority';
 import { ToggleGroup as ToggleGroupPrimitive } from 'radix-ui';
@@ -23,7 +23,7 @@ const ToggleGroupContext = createContext<
  * @param {unknown} props.orientation - Layout orientation.
  * @param {unknown} props.children - Child toggle items.
  *
- * @returns {unknown} The toggle group element.
+ * @returns {JSX.Element} The toggle group element.
  */
 function ToggleGroup({
   className,
@@ -34,7 +34,7 @@ function ToggleGroup({
   children,
   ...props
 }: ComponentProps<typeof ToggleGroupPrimitive.Root>
-  & VariantProps<typeof toggleVariants> & { spacing?: number; orientation?: 'horizontal' | 'vertical' }) {
+  & VariantProps<typeof toggleVariants> & { spacing?: number; orientation?: 'horizontal' | 'vertical' }): JSX.Element {
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"
@@ -65,7 +65,7 @@ function ToggleGroup({
  * @param {unknown} props.variant - Visual variant.
  * @param {unknown} props.size - Button size.
  *
- * @returns {unknown} The toggle group item element.
+ * @returns {JSX.Element} The toggle group item element.
  */
 function ToggleGroupItem({
   className,
@@ -73,7 +73,7 @@ function ToggleGroupItem({
   variant = 'default',
   size = 'default',
   ...props
-}: ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>) {
+}: ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>): JSX.Element {
   const context = useContext(ToggleGroupContext);
 
   return (
