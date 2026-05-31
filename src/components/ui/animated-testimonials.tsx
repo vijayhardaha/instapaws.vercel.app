@@ -13,7 +13,7 @@ type Testimonial = { quote: string; name: string; designation: string; src: stri
  * @param {unknown} props.testimonials - Array of testimonial data.
  * @param {unknown} props.autoplay - Whether to auto-advance slides.
  *
- * @returns {unknown} The animated testimonials component.
+ * @returns {JSX.Element} The animated testimonials component.
  */
 export const AnimatedTestimonials = ({
   testimonials,
