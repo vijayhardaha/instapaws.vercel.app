@@ -13,6 +13,12 @@ import { updateVideoModeration } from '@/lib/actions/videos';
 import type { ModerationStatusEnum } from '@/lib/supabase/database.types';
 import { ABUSE_TYPE_LABELS, REPORT_STATUS_LABELS, type VideoReport } from '@/lib/types';
 
+/**
+ * Props for the moderator auth gate.
+ *
+ * @type {Props}
+ * @property {VideoReport} initialVideos - Initial list of unmoderated videos to display in the moderation queue.
+ */
 interface Props {
   initialVideos: VideoReport[];
 }
@@ -21,8 +27,8 @@ interface Props {
  * Moderation queue client — displays unmoderated videos
  * with approve/reject actions and moderator notes.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.initialVideos - Initial list of unmoderated videos.
+ * @param {{ initialVideos: VideoReport[] }} props - Component props.
+ * @param {VideoReport[]} [props.initialVideos] - Initial list of unmoderated videos.
  *
  * @returns {JSX.Element} The moderation queue with approve/reject actions.
  */
