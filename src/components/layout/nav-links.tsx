@@ -12,9 +12,9 @@ import { cn } from '@/lib/utils';
  * Navigation links with active state tracking.
  * Client component to use usePathname().
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.mobile - Whether to render in mobile mode.
+ * @param {{ className?: string; mobile?: boolean }} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {boolean} [props.mobile] - Whether to render in mobile mode.
  *
  * @returns {JSX.Element} The navigation element.
  */
