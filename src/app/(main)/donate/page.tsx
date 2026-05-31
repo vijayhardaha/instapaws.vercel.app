@@ -88,7 +88,7 @@ export default function DonatePage(): JSX.Element {
       />
 
       <section className="border-border bg-background border-b">
-        <div className="px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Transparency"
             title="Where Your Money Goes"
@@ -107,7 +107,7 @@ export default function DonatePage(): JSX.Element {
               </div>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-muted/30 border-b">
@@ -153,13 +153,13 @@ export default function DonatePage(): JSX.Element {
       />
 
       <section className="bg-muted/50">
-        <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">
+        <Container className="py-8">
           <Separator className="mb-6" />
           <p className="text-muted-foreground text-xs leading-relaxed">
             <strong>Note:</strong> InstaPaws does not collect donations directly. All links point to official partner
             websites. We receive no commissions.
           </p>
-        </div>
+        </Container>
       </section>
     </>
   );
