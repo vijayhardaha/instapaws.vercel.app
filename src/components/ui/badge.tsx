@@ -89,22 +89,24 @@ const badgeVariants = cva(baseClasses.join(' '), {
   defaultVariants: { variant: 'default' },
 });
 
+interface BadgeProps extends ComponentProps<'span'>, VariantProps<typeof badgeVariants> {
+  /** Whether to render as a child of the parent. */
+  asChild?: boolean;
+}
+
 /**
  * Badge component for labels, statuses, and tags.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.variant - Visual variant.
- * @param {unknown} props.asChild - Whether to render as a child of the parent.
+ * @param {BadgeProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {'default' | 'secondary' | 'destructive' | 'outline' | 'ghost' | 'link'} [props.variant] - Visual variant.
+ * @param {boolean} [props.asChild] - Whether to render as a child of the parent.
  *
  * @returns {JSX.Element} The badge element.
+ *
+ * @type {BadgeProps}
  */
-function Badge({
-  className,
-  variant = 'default',
-  asChild = false,
-  ...props
-}: ComponentProps<'span'> & VariantProps<typeof badgeVariants> & { asChild?: boolean }): JSX.Element {
+function Badge({ className, variant = 'default', asChild = false, ...props }: BadgeProps): JSX.Element {
   const Comp = asChild ? Slot.Root : 'span';
 
   return (
