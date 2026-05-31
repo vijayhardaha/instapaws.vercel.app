@@ -12,7 +12,7 @@ import Link from 'next/link';
  *
  * @returns {ReactNode} The moderation layout with minimal header.
  */
-export default function ModerationLayout({ children }: { children: ReactNode }) {
+export default function ModerationLayout({ children }: { children: ReactNode }): ReactNode {
   return (
     <>
       <header className="border-border bg-background/95 sticky top-0 z-50 border-b backdrop-blur-sm">
