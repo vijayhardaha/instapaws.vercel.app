@@ -59,7 +59,7 @@ export const viewport: Viewport = { themeColor: '#2C2C2C', width: 'device-width'
  *
  * @returns {ReactNode} The root HTML document structure.
  */
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>): ReactNode {
   return (
     <html
       lang="en"
