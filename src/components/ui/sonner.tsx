@@ -9,7 +9,7 @@ import { Toaster as Sonner, type ToasterProps } from 'sonner';
 /**
  * Sonner toaster component — renders toast notifications.
  *
- * @param {unknown} props - Component props forwarded to Sonner.
+ * @param {ToasterProps} props - Component props forwarded to Sonner.
  *
  * @returns {JSX.Element} The toaster component.
  */
