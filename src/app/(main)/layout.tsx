@@ -14,7 +14,7 @@ import { SiteWarningGate } from '@/components/warnings/site-warning-gate';
  *
  * @returns {ReactNode} The layout with header, content, and footer.
  */
-export default function MainLayout({ children }: { children: ReactNode }) {
+export default function MainLayout({ children }: { children: ReactNode }): ReactNode {
   return (
     <>
       <SiteWarningGate />
