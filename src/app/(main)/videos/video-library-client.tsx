@@ -57,7 +57,7 @@ const PAGE_SIZE = 12;
  * @param {unknown} showGraphic - Whether to include graphic content.
  * @param {unknown} sortBy - Sort order.
  *
- * @returns {unknown} The filtered and sorted video list.
+ * @returns {JSX.Element} The filtered and sorted video list.
  */
 function filterVideos(
   videos: VideoReport[],
