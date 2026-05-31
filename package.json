@@ -8,6 +8,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "tsc": "tsc --noEmit",
+    "ts:fix": "bun run scripts/add-return-types.ts",
     "format": "prettier --write --log-level error .",
     "format:check": "prettier --check --log-level error ."
   },
@@ -56,6 +57,7 @@
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4",
+    "ts-morph": "^28.0.0",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.60.0"
   },
