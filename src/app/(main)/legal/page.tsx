@@ -4,6 +4,7 @@ import { Scale, FileText, Shield, AlertTriangle } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { Container } from '@/components/layout/container';
 import { HeroBanner } from '@/components/shared/hero-banner';
 import { Separator } from '@/components/ui/separator';
 import { SITE } from '@/lib/constants';
@@ -71,7 +72,7 @@ export default function LegalPage(): JSX.Element {
       />
 
       <section className="bg-background">
-        <div className="px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <div className="space-y-12">
             {SECTIONS.map((section) => (
               <article key={section.title} id={section.title.toLowerCase().replace(/\s+/g, '-')}>
@@ -81,7 +82,7 @@ export default function LegalPage(): JSX.Element {
                   </div>
                   <h2 className="text-xl font-bold tracking-tight">{section.title}</h2>
                 </div>
-                <div className="space-y-4 pl-[52px]">
+                <div className="space-y-4 pl-13">
                   {section.content.map((p, i) => (
                     <p key={i} className="text-muted-foreground text-sm leading-relaxed">
                       {p}
@@ -93,7 +94,7 @@ export default function LegalPage(): JSX.Element {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
+          <div className="mt-12">
             <p className="text-muted-foreground text-xs">
               Last updated: {SITE.year}. If you have questions about these policies,{' '}
               <Link href="/contact" className="hover:text-foreground underline">
@@ -102,7 +103,7 @@ export default function LegalPage(): JSX.Element {
               .
             </p>
           </div>
-        </div>
+        </Container>
       </section>
     </>
   );
