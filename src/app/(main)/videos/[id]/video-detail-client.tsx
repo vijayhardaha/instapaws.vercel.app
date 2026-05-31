@@ -12,6 +12,12 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
 import { ABUSE_TYPE_LABELS, REPORT_STATUS_LABELS, type VideoReport } from '@/lib/types';
 
+/**
+ * Props for the video detail client component.
+ *
+ * @type {Props}
+ * @property {VideoReport} video - The video report data to display.
+ */
 interface Props {
   video: VideoReport;
 }
@@ -19,8 +25,8 @@ interface Props {
 /**
  * Video detail client component with content warning gate and report details.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.video - The video report data to display.
+ * @param {{ video: VideoReport }} props - Component props.
+ * @param {VideoReport} [props.video] - The video report data to display.
  *
  * @returns {JSX.Element} The video detail page with content warning gate.
  */
