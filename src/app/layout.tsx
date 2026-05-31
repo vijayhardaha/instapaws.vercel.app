@@ -63,7 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html
       lang="en"
-      className={`${fontClassNames} font-lg h-full font-sans font-medium antialiased`}
+      className={`${fontClassNames} h-full font-sans text-base font-medium antialiased`}
       data-scroll-behavior="smooth"
     >
       <body className="flex min-h-full flex-col">
