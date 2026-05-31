@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { ChevronDownIcon } from 'lucide-react';
 
@@ -13,9 +13,9 @@ type NativeSelectProps = Omit<ComponentProps<'select'>, 'size'> & { size?: 'sm' 
  * @param {unknown} props.className - Additional CSS classes.
  * @param {unknown} props.size - Select size variant.
  *
- * @returns {unknown} The native select element.
+ * @returns {JSX.Element} The native select element.
  */
-function NativeSelect({ className, size = 'default', ...props }: NativeSelectProps) {
+function NativeSelect({ className, size = 'default', ...props }: NativeSelectProps): JSX.Element {
   return (
     <div
       className={cn('group/native-select relative w-fit has-[select:disabled]:opacity-50', className)}
