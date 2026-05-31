@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 
 import { Menu, X } from 'lucide-react';
 
@@ -13,9 +13,9 @@ import { cn } from '@/lib/utils';
 /**
  * Site header with logo, navigation, and mobile hamburger menu.
  *
- * @returns {unknown} The header element.
+ * @returns {JSX.Element} The header element.
  */
-export function Header() {
+export function Header(): JSX.Element {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
