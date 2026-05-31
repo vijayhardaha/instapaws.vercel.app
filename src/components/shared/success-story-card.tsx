@@ -7,6 +7,12 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { type SuccessStory } from '@/lib/types';
 import { formatDate } from '@/lib/utils';
 
+/**
+ * Props for the success story card component.
+ *
+ * @type {SuccessStoryCardProps}
+ * @property {SuccessStory} story - The success story data.
+ */
 interface SuccessStoryCardProps {
   story: SuccessStory;
 }
@@ -14,8 +20,8 @@ interface SuccessStoryCardProps {
 /**
  * Card displaying a success story with icon, title, date, summary, and outcome.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.story - The success story data.
+ * @param {SuccessStoryCardProps} props - Component props.
+ * @param {SuccessStory} [props.story] - The success story data.
  *
  * @returns {JSX.Element} The success story card element.
  */
