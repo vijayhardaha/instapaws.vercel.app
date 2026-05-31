@@ -6,20 +6,23 @@ import { Switch as SwitchPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
+interface SwitchProps extends ComponentProps<typeof SwitchPrimitive.Root> {
+  /** Toggle size variant. */
+  size?: 'sm' | 'default';
+}
+
 /**
  * Switch / toggle component.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.size - Toggle size variant.
+ * @param {SwitchProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {'sm' | 'default'} [props.size] - Toggle size variant.
  *
  * @returns {JSX.Element} The switch element.
+ *
+ * @type {SwitchProps}
  */
-function Switch({
-  className,
-  size = 'default',
-  ...props
-}: ComponentProps<typeof SwitchPrimitive.Root> & { size?: 'sm' | 'default' }): JSX.Element {
+function Switch({ className, size = 'default', ...props }: SwitchProps): JSX.Element {
   return (
     <SwitchPrimitive.Root
       data-slot="switch"
