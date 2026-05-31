@@ -2,6 +2,7 @@
 // Supabase Database Types — auto-generated pattern
 // =======================================================================
 
+/** Categories of animal abuse recognized by the platform. */
 export type AbuseTypeEnum =
   | 'physical-abuse'
   | 'neglect'
@@ -12,6 +13,7 @@ export type AbuseTypeEnum =
   | 'abandonment'
   | 'other';
 
+/** Lifecycle statuses for a video report from submission to resolution. */
 export type ReportStatusEnum =
   | 'pending-review'
   | 'under-investigation'
@@ -20,8 +22,15 @@ export type ReportStatusEnum =
   | 'dismissed'
   | 'escalated';
 
+/** Internal moderation review status for video reports. */
 export type ModerationStatusEnum = 'unmoderated' | 'approved' | 'rejected';
 
+/**
+ * Supabase database schema type definition.
+ * Maps all tables (videos, success_stories, site_stats), views, functions, and enums.
+ *
+ * @type {Database}
+ */
 export interface Database {
   public: {
     Tables: {
