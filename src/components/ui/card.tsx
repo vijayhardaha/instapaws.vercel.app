@@ -21,7 +21,18 @@ function Card({
       data-slot="card"
       data-size={size}
       className={cn(
-        'group/card bg-card text-card-foreground ring-foreground/10 flex flex-col gap-4 overflow-hidden rounded-xl py-4 text-sm ring-1 has-data-[slot=card-footer]:pb-0 has-[>img:first-child]:pt-0 data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl',
+        [
+          // Layout and sizing
+          'group/card flex flex-col gap-4 overflow-hidden rounded-xl py-4',
+          // Background and styling
+          'bg-card text-card-foreground ring-foreground/10 ring-1',
+          // Footer states
+          'has-data-[slot=card-footer]:pb-0',
+          // Image styling
+          'has-[>img:first-child]:pt-0 *:[img:first-child]:rounded-t-xl *:[img:last-child]:rounded-b-xl',
+          // Small size variant
+          'data-[size=sm]:gap-3 data-[size=sm]:py-3 data-[size=sm]:has-data-[slot=card-footer]:pb-0',
+        ].join(' '),
         className
       )}
       {...props}
@@ -42,7 +53,20 @@ function CardHeader({ className, ...props }: ComponentProps<'div'>): JSX.Element
     <div
       data-slot="card-header"
       className={cn(
-        'group/card-header @container/card-header grid auto-rows-min items-start gap-1 rounded-t-xl px-4 group-data-[size=sm]/card:px-3 has-data-[slot=card-action]:grid-cols-[1fr_auto] has-data-[slot=card-description]:grid-rows-[auto_auto] [.border-b]:pb-4 group-data-[size=sm]/card:[.border-b]:pb-3',
+        [
+          // Layout and grid
+          'group/card-header @container/card-header grid auto-rows-min items-start gap-1',
+          // Styling
+          'rounded-t-xl px-4',
+          // With action slot
+          'has-data-[slot=card-action]:grid-cols-[1fr_auto]',
+          // With description
+          'has-data-[slot=card-description]:grid-rows-[auto_auto]',
+          // Border styling
+          '[.border-b]:pb-4',
+          // Small size variant
+          'group-data-[size=sm]/card:px-3 group-data-[size=sm]/card:[.border-b]:pb-3',
+        ].join(' '),
         className
       )}
       {...props}
@@ -62,7 +86,15 @@ function CardTitle({ className, ...props }: ComponentProps<'div'>): JSX.Element 
   return (
     <div
       data-slot="card-title"
-      className={cn('font-heading text-base leading-snug font-semibold group-data-[size=sm]/card:text-sm', className)}
+      className={cn(
+        [
+          // Text styling
+          'font-heading text-base leading-snug font-semibold',
+          // Small size variant
+          'group-data-[size=sm]/card:text-sm',
+        ].join(' '),
+        className
+      )}
       {...props}
     />
   );
@@ -122,7 +154,17 @@ function CardFooter({ className, ...props }: ComponentProps<'div'>): JSX.Element
   return (
     <div
       data-slot="card-footer"
-      className={cn('bg-muted/50 flex items-center rounded-b-xl border-t p-4 group-data-[size=sm]/card:p-3', className)}
+      className={cn(
+        [
+          // Layout
+          'flex items-center',
+          // Styling
+          'bg-muted/50 rounded-b-xl border-t p-4',
+          // Small size variant
+          'group-data-[size=sm]/card:p-3',
+        ].join(' '),
+        className
+      )}
       {...props}
     />
   );
