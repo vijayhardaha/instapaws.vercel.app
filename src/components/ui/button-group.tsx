@@ -44,20 +44,20 @@ const buttonGroupVariants = cva(baseClasses.join(' '), {
   defaultVariants: { orientation: 'horizontal' },
 });
 
+interface ButtonGroupProps extends ComponentProps<'div'>, VariantProps<typeof buttonGroupVariants> {}
+
 /**
  * Button group — horizontally or vertically groups buttons together.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.orientation - Layout orientation.
+ * @param {ButtonGroupProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {'horizontal' | 'vertical'} [props.orientation] - Layout orientation.
  *
  * @returns {JSX.Element} The button group element.
+ *
+ * @type {ButtonGroupProps}
  */
-function ButtonGroup({
-  className,
-  orientation,
-  ...props
-}: ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>): JSX.Element {
+function ButtonGroup({ className, orientation, ...props }: ButtonGroupProps): JSX.Element {
   return (
     <div
       role="group"
