@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 
@@ -18,9 +20,9 @@ interface VideoCardProps {
  * @param {unknown} props - Component props.
  * @param {unknown} props.video - The video report data.
  *
- * @returns {unknown} The video card element.
+ * @returns {JSX.Element} The video card element.
  */
-export function VideoCard({ video }: VideoCardProps) {
+export function VideoCard({ video }: VideoCardProps): JSX.Element {
   return (
     <Card key={video.id} className="flex flex-col transition-shadow hover:shadow-md">
       <CardHeader>
