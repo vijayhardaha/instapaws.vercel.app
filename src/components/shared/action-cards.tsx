@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from 'react';
+import type { ComponentPropsWithoutRef, JSX, ReactNode } from 'react';
 
 import { ArrowRight, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
@@ -66,9 +66,9 @@ function CtaLink({ variant, external, children, className, ...props }: CtaLinkPr
  * @param {unknown} props - Component props.
  * @param {unknown} props.cards - Array of action card data.
  *
- * @returns {unknown} The action cards grid.
+ * @returns {JSX.Element} The action cards grid.
  */
-export function ActionCards({ cards }: ActionCardsProps) {
+export function ActionCards({ cards }: ActionCardsProps): JSX.Element {
   return (
     <div className="mt-10 grid gap-6 sm:grid-cols-3">
       {cards.map((card) => (
