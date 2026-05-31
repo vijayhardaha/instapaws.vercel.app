@@ -1,6 +1,6 @@
 'use client';
 
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { ChevronDownIcon, CheckIcon, ChevronUpIcon } from 'lucide-react';
 import { Select as SelectPrimitive } from 'radix-ui';
@@ -12,9 +12,9 @@ import { cn } from '@/lib/utils';
  *
  * @param {unknown} props - Component props forwarded to the Radix root.
  *
- * @returns {unknown} The select component.
+ * @returns {JSX.Element} The select component.
  */
-function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
+function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>): JSX.Element {
   return <SelectPrimitive.Root data-slot="select" {...props} />;
 }
 
@@ -23,9 +23,9 @@ function Select({ ...props }: ComponentProps<typeof SelectPrimitive.Root>) {
  *
  * @param {unknown} props - Component props forwarded to the Radix value.
  *
- * @returns {unknown} The select value element.
+ * @returns {JSX.Element} The select value element.
  */
-function SelectValue({ ...props }: ComponentProps<typeof SelectPrimitive.Value>) {
+function SelectValue({ ...props }: ComponentProps<typeof SelectPrimitive.Value>): JSX.Element {
   return <SelectPrimitive.Value data-slot="select-value" {...props} />;
 }
 
@@ -37,14 +37,14 @@ function SelectValue({ ...props }: ComponentProps<typeof SelectPrimitive.Value>)
  * @param {unknown} props.size - Trigger size variant.
  * @param {unknown} props.children - Child content.
  *
- * @returns {unknown} The select trigger element.
+ * @returns {JSX.Element} The select trigger element.
  */
 function SelectTrigger({
   className,
   size = 'default',
   children,
   ...props
-}: ComponentProps<typeof SelectPrimitive.Trigger> & { size?: 'sm' | 'default' }) {
+}: ComponentProps<typeof SelectPrimitive.Trigger> & { size?: 'sm' | 'default' }): JSX.Element {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
@@ -72,7 +72,7 @@ function SelectTrigger({
  * @param {unknown} props.position - Positioning strategy.
  * @param {unknown} props.align - Content alignment.
  *
- * @returns {unknown} The select content element.
+ * @returns {JSX.Element} The select content element.
  */
 function SelectContent({
   className,
@@ -80,7 +80,7 @@ function SelectContent({
   position = 'item-aligned',
   align = 'center',
   ...props
-}: ComponentProps<typeof SelectPrimitive.Content>) {
+}: ComponentProps<typeof SelectPrimitive.Content>): JSX.Element {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -119,9 +119,9 @@ function SelectContent({
  * @param {unknown} props.className - Additional CSS classes.
  * @param {unknown} props.children - Item content.
  *
- * @returns {unknown} The select item element.
+ * @returns {JSX.Element} The select item element.
  */
-function SelectItem({ className, children, ...props }: ComponentProps<typeof SelectPrimitive.Item>) {
+function SelectItem({ className, children, ...props }: ComponentProps<typeof SelectPrimitive.Item>): JSX.Element {
   return (
     <SelectPrimitive.Item
       data-slot="select-item"
@@ -147,9 +147,12 @@ function SelectItem({ className, children, ...props }: ComponentProps<typeof Sel
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The scroll up button element.
+ * @returns {JSX.Element} The scroll up button element.
  */
-function SelectScrollUpButton({ className, ...props }: ComponentProps<typeof SelectPrimitive.ScrollUpButton>) {
+function SelectScrollUpButton({
+  className,
+  ...props
+}: ComponentProps<typeof SelectPrimitive.ScrollUpButton>): JSX.Element {
   return (
     <SelectPrimitive.ScrollUpButton
       data-slot="select-scroll-up-button"
@@ -170,9 +173,12 @@ function SelectScrollUpButton({ className, ...props }: ComponentProps<typeof Sel
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The scroll down button element.
+ * @returns {JSX.Element} The scroll down button element.
  */
-function SelectScrollDownButton({ className, ...props }: ComponentProps<typeof SelectPrimitive.ScrollDownButton>) {
+function SelectScrollDownButton({
+  className,
+  ...props
+}: ComponentProps<typeof SelectPrimitive.ScrollDownButton>): JSX.Element {
   return (
     <SelectPrimitive.ScrollDownButton
       data-slot="select-scroll-down-button"
