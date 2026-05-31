@@ -8,9 +8,17 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 
+/** Session storage key for moderator authentication state. */
 const AUTH_KEY = 'instapaws-moderator-auth';
+/** Moderator password for the v1 auth gate. */
 const MODERATOR_PASSWORD = 'instapaws-mod-2026';
 
+/**
+ * Props for the moderator auth gate.
+ *
+ * @type {Props}
+ * @property {ReactNode} children - Child content to render when authenticated.
+ */
 interface Props {
   children: ReactNode;
 }
@@ -19,8 +27,8 @@ interface Props {
  * Simple password gate for the moderation queue (v1).
  * Stores auth state in sessionStorage for the current browser session.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.children - Child content to render when authenticated.
+ * @param {{ children: ReactNode }} props - Component props.
+ * @param {ReactNode} [props.children] - Child content to render when authenticated.
  *
  * @returns {ReactNode} The password gate or authenticated content.
  */
