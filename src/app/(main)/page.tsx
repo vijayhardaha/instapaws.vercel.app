@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Flag, Heart, Search, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
 
@@ -40,9 +42,9 @@ const HELP_CARDS = [
 /**
  * Homepage — mission statement, recent flags, stats, CTAs, success stories.
  *
- * @returns {unknown} The homepage content.
+ * @returns {Promise<JSX.Element>} The homepage content.
  */
-export default async function HomePage() {
+export default async function HomePage(): Promise<JSX.Element> {
   const [recentVideos, successStories] = await Promise.all([fetchRecentVideos(3), fetchSuccessStories()]);
   const statsResult = await getVideoStats();
   const stats = statsResult.success
