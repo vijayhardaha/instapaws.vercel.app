@@ -13,6 +13,15 @@ import type { ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
 
+/**
+ * Props for the grid pattern background component.
+ *
+ * @type {GridBackgroundProps}
+ * @property {ReactNode} children - Content to render above the grid.
+ * @property {string} [className] - Additional CSS classes for the wrapper.
+ * @property {string} [color] - Grid line color. Default '#808080'.
+ * @property {number} [cellSize] - Grid cell size in pixels. Default 32.
+ */
 interface GridBackgroundProps {
   children: ReactNode;
   className?: string;
@@ -23,11 +32,11 @@ interface GridBackgroundProps {
 /**
  * Grid pattern background with configurable line color and cell size.
  *
- * @param {unknown} props - Component props
- * @param {unknown} props.children - Content to render above the grid
- * @param {unknown} props.className - Additional classes for the wrapper
- * @param {unknown} props.color - Grid line color (default: #808080)
- * @param {unknown} props.cellSize - Grid cell size in px (default: 32)
+ * @param {GridBackgroundProps} props - Component props
+ * @param {ReactNode} [props.children] - Content to render above the grid
+ * @param {string} [props.className] - Additional classes for the wrapper
+ * @param {string} [props.color] - Grid line color (default: #808080)
+ * @param {number} [props.cellSize] - Grid cell size in px (default: 32)
  *
  * @returns {ReactNode} A div with grid background pattern wrapping children.
  */
@@ -52,10 +61,10 @@ export function GridBackground({
 /**
  * Small grid pattern background — finer grid lines (8px cells).
  *
- * @param {unknown} props - Component props
- * @param {unknown} props.children - Content to render above the grid
- * @param {unknown} props.className - Additional classes for the wrapper
- * @param {unknown} props.color - Grid line color (default: #808080)
+ * @param {GridBackgroundProps} props - Component props
+ * @param {ReactNode} [props.children] - Content to render above the grid
+ * @param {string} [props.className] - Additional classes for the wrapper
+ * @param {string} [props.color] - Grid line color (default: #808080)
  *
  * @returns {ReactNode} A div with fine-grid background pattern wrapping children.
  */
@@ -71,6 +80,16 @@ export function GridSmallBackground({
   );
 }
 
+/**
+ * Props for the dot pattern background component.
+ *
+ * @type {DotBackgroundProps}
+ * @property {ReactNode} children - Content to render above the dots.
+ * @property {string} [className] - Additional CSS classes for the wrapper.
+ * @property {string} [color] - Dot fill color. Default '#808080'.
+ * @property {number} [dotSize] - Dot radius in pixels. Default 1.6.
+ * @property {number} [spacing] - Spacing between dots in pixels. Default 16.
+ */
 interface DotBackgroundProps {
   children: ReactNode;
   className?: string;
@@ -82,12 +101,12 @@ interface DotBackgroundProps {
 /**
  * Dot pattern background with configurable dot color, size, and spacing.
  *
- * @param {unknown} props - Component props
- * @param {unknown} props.children - Content to render above the dots
- * @param {unknown} props.className - Additional classes for the wrapper
- * @param {unknown} props.color - Dot fill color (default: #808080)
- * @param {unknown} props.dotSize - Dot radius in px (default: 1.6)
- * @param {unknown} props.spacing - Spacing between dots in px (default: 16)
+ * @param {GridBackgroundProps} props - Component props
+ * @param {ReactNode} [props.children] - Content to render above the dots
+ * @param {string} [props.className] - Additional classes for the wrapper
+ * @param {string} [props.color] - Dot fill color (default: #808080)
+ * @param {number} [props.dotSize] - Dot radius in px (default: 1.6)
+ * @param {number} [props.spacing] - Spacing between dots in px (default: 16)
  *
  * @returns {ReactNode} A div with dot background pattern wrapping children.
  */
