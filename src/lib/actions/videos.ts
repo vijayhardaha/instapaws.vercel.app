@@ -164,9 +164,9 @@ export async function getVideoStats(): Promise<ActionResult> {
 /**
  * Fetch all unmoderated videos for the moderation queue.
  *
- * @returns {Promise<{ success: boolean; data: Database['public']['Tables']['videos']['Row'][]; error?: string }>} Result with array of unmoderated videos or error.
+ * @returns {Promise<ActionResult>} Result with array of unmoderated videos or error.
  */
-export async function fetchUnmoderatedVideos() {
+export async function fetchUnmoderatedVideos(): Promise<ActionResult> {
   const db = getDb();
   if (!db) return { success: true, data: [] };
 
