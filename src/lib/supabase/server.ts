@@ -40,7 +40,7 @@ export async function createClient(): Promise<SupabaseServerClient> {
  *
  * @returns {Promise<SupabaseServerClient | null>} The Supabase client, or null if not configured.
  */
-export async function getSupabaseServerClient() {
+export async function getSupabaseServerClient(): Promise<SupabaseServerClient | null> {
   if (!isSupabaseConfigured()) return null;
   return createClient();
 }
