@@ -3,6 +3,20 @@ import type { JSX, ReactNode } from 'react';
 import { Container } from '@/components/layout/container';
 import { cn } from '@/lib/utils';
 
+/**
+ * Props for the hero banner component.
+ *
+ * @type {HeroBannerProps}
+ * @property {string} tag - Tag label displayed above the title.
+ * @property {ReactNode} title - Main heading content.
+ * @property {string} description - Descriptive text below the title.
+ * @property {string} [sectionClassName] - Additional CSS classes for the section element.
+ * @property {string} [className] - Additional CSS classes for the content div.
+ * @property {string} [tagClassName] - Additional CSS classes for the tag element.
+ * @property {string} [headingClassName] - Additional CSS classes for the heading element.
+ * @property {string} [descriptionClassName] - Additional CSS classes for the description element.
+ * @property {ReactNode} [children] - Optional extra content below the heading.
+ */
 interface HeroBannerProps {
   tag: string;
   title: ReactNode;
