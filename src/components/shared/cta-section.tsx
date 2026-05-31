@@ -2,6 +2,15 @@ import type { JSX, ReactNode } from 'react';
 
 import { Container } from '@/components/layout/container';
 
+/**
+ * Configuration for a single CTA button.
+ *
+ * @type {CtaButton}
+ * @property {string} label - Button text.
+ * @property {string} href - Destination URL.
+ * @property {ReactNode} [icon] - Optional icon element.
+ * @property {'primary' | 'outline'} [variant] - Button visual variant.
+ */
 interface CtaButton {
   label: string;
   href: string;
@@ -9,6 +18,14 @@ interface CtaButton {
   variant?: 'primary' | 'outline';
 }
 
+/**
+ * Props for the CTA section component.
+ *
+ * @type {CtaSectionProps}
+ * @property {string} title - Call-to-action heading text.
+ * @property {string} description - Supporting description text.
+ * @property {[CtaButton, CtaButton?]} buttons - One or two CTA button configurations.
+ */
 interface CtaSectionProps {
   title: string;
   description: string;
