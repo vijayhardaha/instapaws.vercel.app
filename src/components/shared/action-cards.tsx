@@ -79,7 +79,7 @@ export function ActionCards({ cards }: ActionCardsProps): JSX.Element {
             </div>
             <h3 className="mt-4 text-lg font-semibold">{card.title}</h3>
           </CardHeader>
-          <CardContent>
+          <CardContent className="flex-1">
             <p className="text-muted-foreground text-sm">{card.description}</p>
           </CardContent>
           <CardFooter className="justify-center">
