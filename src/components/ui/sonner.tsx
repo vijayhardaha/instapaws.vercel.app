@@ -11,7 +11,7 @@ import { Toaster as Sonner, type ToasterProps } from 'sonner';
  *
  * @param {unknown} props - Component props forwarded to Sonner.
  *
- * @returns {unknown} The toaster component.
+ * @returns {JSX.Element} The toaster component.
  */
 const Toaster = ({ ...props }: ToasterProps) => {
   const { theme = 'system' } = useTheme();
