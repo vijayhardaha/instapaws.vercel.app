@@ -219,16 +219,23 @@ const buttonVariants = cva(baseClasses.join(' '), {
   defaultVariants: { variant: 'default', size: 'default' },
 });
 
+interface ButtonProps extends ComponentProps<'button'>, VariantProps<typeof buttonVariants> {
+  /** Whether to render as a child of the parent. */
+  asChild?: boolean;
+}
+
 /**
  * Button component with variants and sizes.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.variant - Visual variant.
- * @param {unknown} props.size - Button size.
- * @param {unknown} props.asChild - Whether to render as a child of the parent.
+ * @param {ButtonProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {'default' | 'outline' | 'secondary' | 'ghost' | 'destructive' | 'link'} [props.variant] - Visual variant.
+ * @param {'default' | 'xs' | 'sm' | 'lg' | 'icon' | 'icon-xs' | 'icon-sm' | 'icon-lg'} [props.size] - Button size.
+ * @param {boolean} [props.asChild] - Whether to render as a child of the parent.
  *
  * @returns {JSX.Element} The button element.
+ *
+ * @type {ButtonProps}
  */
 function Button({
   className,
@@ -236,7 +243,7 @@ function Button({
   size = 'default',
   asChild = false,
   ...props
-}: ComponentProps<'button'> & VariantProps<typeof buttonVariants> & { asChild?: boolean }): JSX.Element {
+}: ButtonProps): JSX.Element {
   const Comp = asChild ? Slot.Root : 'button';
 
   return (
