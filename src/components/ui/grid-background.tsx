@@ -31,7 +31,12 @@ interface GridBackgroundProps {
  *
  * @returns {ReactNode} A div with grid background pattern wrapping children.
  */
-export function GridBackground({ children, className, color = '#808080', cellSize = 32 }: GridBackgroundProps) {
+export function GridBackground({
+  children,
+  className,
+  color = '#808080',
+  cellSize = 32,
+}: GridBackgroundProps): ReactNode {
   const gridSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${cellSize} ${cellSize}" width="${cellSize}" height="${cellSize}" fill="none" stroke="${color}"><path d="M0 .5H${cellSize}V${cellSize}"/></svg>`;
 
   return (
@@ -54,7 +59,11 @@ export function GridBackground({ children, className, color = '#808080', cellSiz
  *
  * @returns {ReactNode} A div with fine-grid background pattern wrapping children.
  */
-export function GridSmallBackground({ children, className, color = '#808080' }: Omit<GridBackgroundProps, 'cellSize'>) {
+export function GridSmallBackground({
+  children,
+  className,
+  color = '#808080',
+}: Omit<GridBackgroundProps, 'cellSize'>): ReactNode {
   return (
     <GridBackground className={className} color={color} cellSize={8}>
       {children}
@@ -88,7 +97,7 @@ export function DotBackground({
   color = '#808080',
   dotSize = 1.6,
   spacing = 16,
-}: DotBackgroundProps) {
+}: DotBackgroundProps): ReactNode {
   const dotSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${spacing} ${spacing}" width="${spacing}" height="${spacing}" fill="none"><circle fill="${color}" cx="${spacing / 2}" cy="${spacing / 2}" r="${dotSize}"/></svg>`;
 
   return (
