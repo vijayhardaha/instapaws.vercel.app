@@ -4,6 +4,7 @@ import type { Metadata } from 'next';
 
 import { ContactFormClient } from '@/components/forms/contact-form-client';
 import { Container } from '@/components/layout/container';
+import { HeroBanner } from '@/components/shared/hero-banner';
 import { SectionHeading } from '@/components/shared/section-heading';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
@@ -22,16 +23,11 @@ export const metadata: Metadata = {
 export default function ContactPage(): JSX.Element {
   return (
     <>
-      <section className="border-border bg-primary text-primary-foreground border-b">
-        <Container className="py-16">
-          <SectionHeading
-            tag="Contact"
-            title="Get in Touch"
-            description="Have a tip, a question, or a partnership idea? We are here to listen."
-            className="text-primary-foreground"
-          />
-        </Container>
-      </section>
+      <HeroBanner
+        tag="Contact"
+        title="Get in Touch"
+        description="Have a tip, a question, or a partnership idea? We are here to listen."
+      />
 
       <section className="border-border bg-background border-b">
         <Container className="py-16">
