@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, type JSX } from 'react';
 
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -15,13 +15,13 @@ type Testimonial = { quote: string; name: string; designation: string; src: stri
  *
  * @returns {JSX.Element} The animated testimonials component.
  */
-export const AnimatedTestimonials = ({
+export function AnimatedTestimonials({
   testimonials,
   autoplay = false,
 }: {
   testimonials: Testimonial[];
   autoplay?: boolean;
-}) => {
+}): JSX.Element {
   const [active, setActive] = useState(0);
 
   const handleNext = useCallback(() => {
@@ -121,4 +121,4 @@ export const AnimatedTestimonials = ({
       </div>
     </div>
   );
-};
+}
