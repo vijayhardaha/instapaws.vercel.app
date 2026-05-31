@@ -34,18 +34,18 @@ export default function ContactPage(): JSX.Element {
       </section>
 
       <section className="border-border bg-background border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Send a Message"
             title="Contact Form"
             description="All fields marked are optional — you may remain fully anonymous."
           />
           <ContactFormClient />
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-muted/30 border-b">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Anonymous Tips"
             title="Submit a Tip Without Identifying Yourself"
@@ -78,11 +78,11 @@ export default function ContactPage(): JSX.Element {
               </CardContent>
             </Card>
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="bg-background">
-        <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Collaborate"
             title="Partnership Inquiries"
@@ -104,7 +104,7 @@ export default function ContactPage(): JSX.Element {
             <strong>Media inquiries:</strong> Journalists and researchers may contact us for interviews, data access, or
             case studies. We respond to media requests within 48 hours.
           </p>
-        </div>
+        </Container>
       </section>
     </>
   );
