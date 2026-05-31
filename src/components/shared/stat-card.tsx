@@ -2,6 +2,14 @@ import type { JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
+/**
+ * Props for the stat card component.
+ *
+ * @type {StatCardProps}
+ * @property {string | number} value - Statistic value to display.
+ * @property {string} label - Label describing the statistic.
+ * @property {string} [className] - Additional CSS classes.
+ */
 interface StatCardProps {
   value: string | number;
   label: string;
