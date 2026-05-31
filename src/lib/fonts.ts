@@ -38,7 +38,7 @@ export const monoFont = Courier_Prime({
   weight: ['400', '700'],
   style: ['normal', 'italic'],
   display: 'swap',
-  preload: true,
+  preload: false,
 });
 
 /**
