@@ -5,23 +5,28 @@ import { useCallback, useEffect, useState, type JSX } from 'react';
 import { IconArrowLeft, IconArrowRight } from '@tabler/icons-react';
 import { motion, AnimatePresence } from 'motion/react';
 
+/** A single testimonial entry with quote, name, designation, and image source. */
 type Testimonial = { quote: string; name: string; designation: string; src: string };
+
+interface AnimatedTestimonialsProps {
+  /** Array of testimonial data. */
+  testimonials: Testimonial[];
+  /** Whether to auto-advance slides. */
+  autoplay?: boolean;
+}
+
 /**
  * Animated testimonials carousel with image transitions and quote display.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.testimonials - Array of testimonial data.
- * @param {unknown} props.autoplay - Whether to auto-advance slides.
+ * @param {AnimatedTestimonialsProps} props - Component props.
+ * @param {Testimonial[]} [props.testimonials] - Array of testimonial data.
+ * @param {boolean} [props.autoplay] - Whether to auto-advance slides.
  *
  * @returns {JSX.Element} The animated testimonials component.
+ *
+ * @type {AnimatedTestimonialsProps}
  */
-export function AnimatedTestimonials({
-  testimonials,
-  autoplay = false,
-}: {
-  testimonials: Testimonial[];
-  autoplay?: boolean;
-}): JSX.Element {
+export function AnimatedTestimonials({ testimonials, autoplay = false }: AnimatedTestimonialsProps): JSX.Element {
   const [active, setActive] = useState(0);
 
   const handleNext = useCallback(() => {
