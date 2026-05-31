@@ -1,5 +1,7 @@
 'use client';
 
+import type { JSX } from 'react';
+
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -16,7 +18,7 @@ interface PaginationBarProps {
  * @param {unknown} currentPage - The active page number.
  * @param {unknown} totalPages - The total number of pages.
  *
- * @returns {unknown} Array of page numbers and ellipsis markers.
+ * @returns {JSX.Element} Array of page numbers and ellipsis markers.
  */
 function getPageNumbers(currentPage: number, totalPages: number): (number | 'ellipsis')[] {
   const pages: (number | 'ellipsis')[] = [];
@@ -42,10 +44,10 @@ function getPageNumbers(currentPage: number, totalPages: number): (number | 'ell
  * @param {unknown} props.totalPages - The total number of pages.
  * @param {unknown} props.onPageChange - Callback when page changes.
  *
- * @returns {unknown} The pagination bar element, or null if totalPages <= 1.
+ * @returns {JSX.Element} The pagination bar element, or null if totalPages <= 1.
  */
-export function PaginationBar({ currentPage, totalPages, onPageChange }: PaginationBarProps) {
-  if (totalPages <= 1) return null;
+export function PaginationBar({ currentPage, totalPages, onPageChange }: PaginationBarProps): JSX.Element {
+  if (totalPages <= 1) return <></>;
 
   return (
     <nav className="mt-10 flex items-center justify-center gap-1" aria-label="Pagination">
