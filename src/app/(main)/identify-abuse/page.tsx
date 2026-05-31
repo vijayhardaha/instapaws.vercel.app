@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { AlertTriangle, Hand, Droplets, Swords, Bone, Home, MapPin, Flag, ArrowRight } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -93,9 +95,9 @@ const ABUSE_TYPES = [
 /**
  * Identify Abuse page — abuse types, signs, and CTAs.
  *
- * @returns {unknown} The identify-abuse page content.
+ * @returns {JSX.Element} The identify-abuse page content.
  */
-export default function IdentifyAbusePage() {
+export default function IdentifyAbusePage(): JSX.Element {
   return (
     <>
       <HeroBanner
