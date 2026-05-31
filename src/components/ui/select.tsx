@@ -50,7 +50,34 @@ function SelectTrigger({
       data-slot="select-trigger"
       data-size={size}
       className={cn(
-        "border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 data-placeholder:text-muted-foreground dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 flex w-fit items-center justify-between gap-1.5 rounded-lg border bg-transparent py-2 pr-2 pl-2.5 text-sm whitespace-nowrap transition-colors outline-none select-none focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 data-[size=default]:h-8 data-[size=sm]:h-7 data-[size=sm]:rounded-[min(var(--radius-md),10px)] *:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        [
+          // Layout
+          'flex w-fit items-center justify-between gap-1.5',
+          // Border and background
+          'border-input rounded-lg border bg-transparent',
+          // Padding and sizing
+          'py-2 pr-2 pl-2.5 data-[size=default]:h-8 data-[size=sm]:h-7',
+          // Text styling
+          'text-sm whitespace-nowrap select-none',
+          // Interactions
+          'transition-colors outline-none',
+          // Placeholder
+          'data-placeholder:text-muted-foreground',
+          // Focus states
+          'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3',
+          // Disabled states
+          'disabled:cursor-not-allowed disabled:opacity-50',
+          // Aria-invalid states
+          'aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-invalid:ring-3',
+          // Small size variant
+          'data-[size=sm]:rounded-[min(var(--radius-md),10px)]',
+          // Dark mode
+          'dark:bg-input/30 dark:hover:bg-input/50 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40',
+          // Select value child
+          '*:data-[slot=select-value]:line-clamp-1 *:data-[slot=select-value]:flex *:data-[slot=select-value]:items-center *:data-[slot=select-value]:gap-1.5',
+          // Icon styling
+          "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+        ].join(' '),
         className
       )}
       {...props}
@@ -87,9 +114,30 @@ function SelectContent({
         data-slot="select-content"
         data-align-trigger={position === 'item-aligned'}
         className={cn(
-          'bg-popover text-popover-foreground ring-foreground/10 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 relative z-50 max-h-(--radix-select-content-available-height) min-w-36 origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto rounded-lg shadow-md ring-1 duration-100 data-[align-trigger=true]:animate-none',
-          position === 'popper'
-            && 'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+          [
+            // Layout and sizing
+            'relative z-50 max-h-(--radix-select-content-available-height) min-w-36',
+            // Overflow and origin
+            'origin-(--radix-select-content-transform-origin) overflow-x-hidden overflow-y-auto',
+            // Styling
+            'bg-popover text-popover-foreground ring-foreground/10 rounded-lg shadow-md ring-1',
+            // Animation - open state
+            'data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95',
+            // Animation - closed state
+            'data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95',
+            // Slide-in animation
+            'data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
+            // Duration and align-trigger
+            'duration-100 data-[align-trigger=true]:animate-none',
+            // Popper positioning
+            ...(position === 'popper'
+              ? [
+                  'data-[side=bottom]:translate-y-1 data-[side=left]:-translate-x-1 data-[side=right]:translate-x-1 data-[side=top]:-translate-y-1',
+                ]
+              : []),
+          ]
+            .filter(Boolean)
+            .join(' '),
           className
         )}
         position={position}
@@ -126,7 +174,24 @@ function SelectItem({ className, children, ...props }: ComponentProps<typeof Sel
     <SelectPrimitive.Item
       data-slot="select-item"
       className={cn(
-        "focus:bg-accent focus:text-accent-foreground not-data-[variant=destructive]:focus:**:text-accent-foreground relative flex w-full cursor-default items-center gap-1.5 rounded-md py-1 pr-8 pl-1.5 text-sm outline-hidden select-none data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 *:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2",
+        [
+          // Layout
+          'relative flex w-full items-center gap-1.5',
+          // Styling
+          'rounded-md py-1 pr-8 pl-1.5 text-sm',
+          // Interaction
+          'cursor-default outline-hidden select-none',
+          // Focus state
+          'focus:bg-accent focus:text-accent-foreground',
+          // Destructive variant
+          'not-data-[variant=destructive]:focus:**:text-accent-foreground',
+          // Disabled state
+          'data-disabled:pointer-events-none data-disabled:opacity-50',
+          // SVG styling
+          "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+          // Span children
+          '*:[span]:last:flex *:[span]:last:items-center *:[span]:last:gap-2',
+        ].join(' '),
         className
       )}
       {...props}
@@ -157,7 +222,14 @@ function SelectScrollUpButton({
     <SelectPrimitive.ScrollUpButton
       data-slot="select-scroll-up-button"
       className={cn(
-        "bg-popover z-10 flex cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4",
+        [
+          // Layout and styling
+          'bg-popover z-10 flex items-center justify-center py-1',
+          // Interaction
+          'cursor-default',
+          // Icon sizing
+          "[&_svg:not([class*='size-'])]:size-4",
+        ].join(' '),
         className
       )}
       {...props}
@@ -183,7 +255,14 @@ function SelectScrollDownButton({
     <SelectPrimitive.ScrollDownButton
       data-slot="select-scroll-down-button"
       className={cn(
-        "bg-popover z-10 flex cursor-default items-center justify-center py-1 [&_svg:not([class*='size-'])]:size-4",
+        [
+          // Layout and styling
+          'bg-popover z-10 flex items-center justify-center py-1',
+          // Interaction
+          'cursor-default',
+          // Icon sizing
+          "[&_svg:not([class*='size-'])]:size-4",
+        ].join(' '),
         className
       )}
       {...props}
