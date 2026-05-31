@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props.svgOptions - SVG animation options.
  * @param {unknown} props.svgOptions.duration - Animation duration in seconds.
  *
- * @returns {unknown} The background lines component.
+ * @returns {JSX.Element} The background lines component.
  */
 export const BackgroundLines = ({
   children,
