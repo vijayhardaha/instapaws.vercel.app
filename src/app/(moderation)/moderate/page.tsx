@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import type { Metadata } from 'next';
 
 import { fetchUnmoderatedVideos } from '@/lib/data/videos';
@@ -14,9 +16,9 @@ export const metadata: Metadata = {
  * Moderation page — password-protected queue for reviewing
  * and approving/rejecting submitted video reports.
  *
- * @returns {unknown} The moderation page content.
+ * @returns {Promise<JSX.Element>} The moderation page content.
  */
-export default async function ModeratePage() {
+export default async function ModeratePage(): Promise<JSX.Element> {
   const videos = await fetchUnmoderatedVideos();
   return (
     <ModerateAuthGate>
