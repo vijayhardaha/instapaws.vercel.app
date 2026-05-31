@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 import { Container } from '@/components/layout/container';
 import { SectionHeading } from '@/components/shared/section-heading';
@@ -23,7 +23,7 @@ interface HeroBannerProps {
  *
  * @returns {JSX.Element} Hero banner section.
  */
-export function HeroBanner({ tag, title, description, children }: HeroBannerProps) {
+export function HeroBanner({ tag, title, description, children }: HeroBannerProps): JSX.Element {
   return (
     <section className="border-border bg-primary text-primary-foreground border-b">
       <Container className="py-16">
