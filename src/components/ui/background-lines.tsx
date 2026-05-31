@@ -5,26 +5,28 @@ import { motion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
+interface BackgroundLinesProps {
+  /** Content to render above the lines. */
+  children: ReactNode;
+  /** Additional CSS classes. */
+  className?: string;
+  /** SVG animation options. */
+  svgOptions?: { duration?: number };
+}
+
 /**
  * Animated background lines with SVG path animations.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.children - Content to render above the lines.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.svgOptions - SVG animation options.
- * @param {unknown} props.svgOptions.duration - Animation duration in seconds.
+ * @param {BackgroundLinesProps} props - Component props.
+ * @param {ReactNode} [props.children] - Content to render above the lines.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {{ duration?: number }} [props.svgOptions] - SVG animation options.
  *
  * @returns {JSX.Element} The background lines component.
+ *
+ * @type {BackgroundLinesProps}
  */
-export function BackgroundLines({
-  children,
-  className,
-  svgOptions,
-}: {
-  children: ReactNode;
-  className?: string;
-  svgOptions?: { duration?: number };
-}): JSX.Element {
+export function BackgroundLines({ children, className, svgOptions }: BackgroundLinesProps): JSX.Element {
   return (
     <div className={cn('h-80 w-full bg-white md:h-screen dark:bg-black', className)}>
       <SVG svgOptions={svgOptions} />
