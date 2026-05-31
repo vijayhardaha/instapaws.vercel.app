@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { cva, type VariantProps } from 'class-variance-authority';
 import { Slot } from 'radix-ui';
@@ -46,7 +46,7 @@ const buttonVariants = cva(
  * @param {unknown} props.size - Button size.
  * @param {unknown} props.asChild - Whether to render as a child of the parent.
  *
- * @returns {unknown} The button element.
+ * @returns {JSX.Element} The button element.
  */
 function Button({
   className,
@@ -54,7 +54,7 @@ function Button({
   size = 'default',
   asChild = false,
   ...props
-}: ComponentProps<'button'> & VariantProps<typeof buttonVariants> & { asChild?: boolean }) {
+}: ComponentProps<'button'> & VariantProps<typeof buttonVariants> & { asChild?: boolean }): JSX.Element {
   const Comp = asChild ? Slot.Root : 'button';
 
   return (
