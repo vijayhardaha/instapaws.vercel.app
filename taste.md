@@ -57,6 +57,9 @@
 
 ## What to Avoid
 
+- **Don't run eslint unnecessarily** — Only run `bun run lint` when the user explicitly asks for it. Don't run it as part of routine work.
+- **Don't run build unnecessarily** — `bun run build` is slow. Only run it when the user explicitly asks for it.
+- **Don't spawn code-reviewer automatically** — Only spawn `code-reviewer-deepseek-flash` when the user explicitly asks for it. Don't use it as part of routine work.
 - Unused exports / dead code — remove them. Check with `fallow health` and code search.
 - Large files (>200 lines) — split into smaller components.
 - Large functions — break down into named helper functions.
