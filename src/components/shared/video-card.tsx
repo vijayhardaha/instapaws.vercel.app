@@ -9,6 +9,12 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/components/ui/card'
 import { ABUSE_TYPE_LABELS, REPORT_STATUS_LABELS, type VideoReport } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
+/**
+ * Props for the video card component.
+ *
+ * @type {VideoCardProps}
+ * @property {VideoReport} video - The video report data to display.
+ */
 interface VideoCardProps {
   video: VideoReport;
 }
@@ -17,8 +23,8 @@ interface VideoCardProps {
  * Card displaying a video report summary.
  * Used on the homepage, video library, and similar listings.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.video - The video report data.
+ * @param {VideoCardProps} props - Component props.
+ * @param {VideoReport} [props.video] - The video report data.
  *
  * @returns {JSX.Element} The video card element.
  */
