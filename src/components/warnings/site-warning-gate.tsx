@@ -69,8 +69,7 @@ export function SiteWarningGate(): JSX.Element {
           {/* Warning */}
           <h1 className="text-foreground text-3xl font-bold tracking-tight">Content Warning</h1>
           <p className="text-muted-foreground text-base leading-relaxed">
-            This site contains disturbing content showing harm to dogs.
-            <strong className="text-foreground mt-2 block">Viewer discretion is strongly advised.</strong>
+            This site contains disturbing content showing harm to dogs. Viewer discretion is strongly advised.
           </p>
 
           {/* Mission */}
