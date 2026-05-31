@@ -11,6 +11,6 @@ export { siteUrl, getPermaLink } from '@/lib/utils/url';
  *
  * @returns {string} Merged class string with conflicting Tailwind classes resolved.
  */
-export function cn(...inputs: ClassValue[]) {
+export function cn(...inputs: ClassValue[]): string {
   return twMerge(clsx(inputs));
 }
