@@ -13,15 +13,31 @@ const ToggleGroupContext = createContext<
 >({ size: 'default', variant: 'default', spacing: 2, orientation: 'horizontal' });
 
 /**
+ * Props for the toggle group root component.
+ *
+ * @typedef {object} ToggleGroupProps
+ * @property {string} [className] - Additional CSS classes.
+ * @property {string} [variant] - Visual variant.
+ * @property {string} [size] - Button size.
+ * @property {number} [spacing] - Gap between items.
+ * @property {'horizontal' | 'vertical'} [orientation] - Layout orientation.
+ */
+type ToggleGroupProps = ComponentProps<typeof ToggleGroupPrimitive.Root> & {
+  variant?: VariantProps<typeof toggleVariants>['variant'];
+  size?: VariantProps<typeof toggleVariants>['size'];
+  spacing?: number;
+  orientation?: 'horizontal' | 'vertical';
+};
+
+/**
  * Toggle group — groups toggle buttons together.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.variant - Visual variant.
- * @param {unknown} props.size - Button size.
- * @param {unknown} props.spacing - Gap between items.
- * @param {unknown} props.orientation - Layout orientation.
- * @param {unknown} props.children - Child toggle items.
+ * @param {ToggleGroupProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {string} [props.variant] - Visual variant.
+ * @param {string} [props.size] - Button size.
+ * @param {number} [props.spacing] - Gap between items.
+ * @param {string} [props.orientation] - Layout orientation.
  *
  * @returns {JSX.Element} The toggle group element.
  */
@@ -33,8 +49,7 @@ function ToggleGroup({
   orientation = 'horizontal',
   children,
   ...props
-}: ComponentProps<typeof ToggleGroupPrimitive.Root>
-  & VariantProps<typeof toggleVariants> & { spacing?: number; orientation?: 'horizontal' | 'vertical' }): JSX.Element {
+}: ToggleGroupProps): JSX.Element {
   return (
     <ToggleGroupPrimitive.Root
       data-slot="toggle-group"
@@ -57,13 +72,25 @@ function ToggleGroup({
 }
 
 /**
+ * Props for the toggle group item component.
+ *
+ * @typedef {object} ToggleGroupItemProps
+ * @property {string} [className] - Additional CSS classes.
+ * @property {string} [variant] - Visual variant.
+ * @property {string} [size] - Button size.
+ */
+type ToggleGroupItemProps = ComponentProps<typeof ToggleGroupPrimitive.Item> & {
+  variant?: VariantProps<typeof toggleVariants>['variant'];
+  size?: VariantProps<typeof toggleVariants>['size'];
+};
+
+/**
  * Toggle group item button.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.children - Item content.
- * @param {unknown} props.variant - Visual variant.
- * @param {unknown} props.size - Button size.
+ * @param {ToggleGroupItemProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {string} [props.variant] - Visual variant.
+ * @param {string} [props.size] - Button size.
  *
  * @returns {JSX.Element} The toggle group item element.
  */
@@ -73,7 +100,7 @@ function ToggleGroupItem({
   variant = 'default',
   size = 'default',
   ...props
-}: ComponentProps<typeof ToggleGroupPrimitive.Item> & VariantProps<typeof toggleVariants>): JSX.Element {
+}: ToggleGroupItemProps): JSX.Element {
   const context = useContext(ToggleGroupContext);
 
   return (
