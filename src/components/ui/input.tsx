@@ -2,16 +2,20 @@ import { type ComponentProps, type JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
+interface InputProps extends ComponentProps<'input'> {}
+
 /**
  * Text input component.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.type - Input type attribute.
+ * @param {InputProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {string} [props.type] - Input type attribute.
  *
  * @returns {JSX.Element} The input element.
+ *
+ * @type {InputProps}
  */
-function Input({ className, type, ...props }: ComponentProps<'input'>): JSX.Element {
+function Input({ className, type, ...props }: InputProps): JSX.Element {
   return (
     <input
       type={type}
