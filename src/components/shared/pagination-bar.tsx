@@ -6,6 +6,14 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 
+/**
+ * Props for the pagination bar component.
+ *
+ * @type {PaginationBarProps}
+ * @property {number} currentPage - The active page number.
+ * @property {number} totalPages - The total number of pages.
+ * @property {(page: number) => void} onPageChange - Callback when page changes.
+ */
 interface PaginationBarProps {
   currentPage: number;
   totalPages: number;
@@ -15,8 +23,8 @@ interface PaginationBarProps {
 /**
  * Generate page numbers to display with ellipsis for large page counts.
  *
- * @param {unknown} currentPage - The active page number.
- * @param {unknown} totalPages - The total number of pages.
+ * @param {number} currentPage - The active page number.
+ * @param {number} totalPages - The total number of pages.
  *
  * @returns {JSX.Element} Array of page numbers and ellipsis markers.
  */
@@ -39,10 +47,10 @@ function getPageNumbers(currentPage: number, totalPages: number): (number | 'ell
 /**
  * Pagination bar with page numbers, previous/next buttons, and ellipsis.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.currentPage - The active page number.
- * @param {unknown} props.totalPages - The total number of pages.
- * @param {unknown} props.onPageChange - Callback when page changes.
+ * @param {PaginationBarProps} props - Component props.
+ * @param {number} [props.currentPage] - The active page number.
+ * @param {number} [props.totalPages] - The total number of pages.
+ * @param {(page: number) => void} [props.onPageChange] - Callback when page changes.
  *
  * @returns {JSX.Element} The pagination bar element, or null if totalPages <= 1.
  */
