@@ -6,8 +6,8 @@ import Link from 'next/link';
  * InstaPaws site logo — muted orange paw print + text.
  * Not playful. Serious, clean, trustworthy.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {{ className?: string }} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The site logo element.
  */
