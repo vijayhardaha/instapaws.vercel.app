@@ -2,15 +2,19 @@ import { type ComponentProps, type JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
+interface TextareaProps extends ComponentProps<'textarea'> {}
+
 /**
  * Textarea input component.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {TextareaProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The textarea element.
+ *
+ * @type {TextareaProps}
  */
-function Textarea({ className, ...props }: ComponentProps<'textarea'>): JSX.Element {
+function Textarea({ className, ...props }: TextareaProps): JSX.Element {
   return (
     <textarea
       data-slot="textarea"
