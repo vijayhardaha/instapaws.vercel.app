@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 
 import { AlertTriangle, X } from 'lucide-react';
 
@@ -14,9 +14,9 @@ const STORAGE_KEY = 'instapaws-emergency-dismissed';
  * Warns users about immediate danger situations.
  * Dismissible with session storage persistence.
  *
- * @returns {unknown} The emergency banner element, or null if dismissed.
+ * @returns {JSX.Element} The emergency banner element, or null if dismissed.
  */
-export function EmergencyBanner() {
+export function EmergencyBanner(): JSX.Element {
   const [visible, setVisible] = useState(() => {
     try {
       return !sessionStorage.getItem(STORAGE_KEY);
@@ -30,7 +30,7 @@ export function EmergencyBanner() {
     sessionStorage.setItem(STORAGE_KEY, 'true');
   };
 
-  if (!visible) return null;
+  if (!visible) return <></>;
 
   return (
     <div role="alert" className="bg-destructive text-destructive-foreground py-2.5 text-sm">
