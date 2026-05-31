@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -9,9 +9,9 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props.className - Additional CSS classes.
  * @param {unknown} props.type - Input type attribute.
  *
- * @returns {unknown} The input element.
+ * @returns {JSX.Element} The input element.
  */
-function Input({ className, type, ...props }: ComponentProps<'input'>) {
+function Input({ className, type, ...props }: ComponentProps<'input'>): JSX.Element {
   return (
     <input
       type={type}
