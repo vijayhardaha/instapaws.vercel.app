@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Heart, ExternalLink, DollarSign, ShieldCheck } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -74,9 +76,9 @@ const PARTNER_ORGS = [
 /**
  * Donate page — fund allocation breakdown and partner organizations.
  *
- * @returns {unknown} The donate page content.
+ * @returns {JSX.Element} The donate page content.
  */
-export default function DonatePage() {
+export default function DonatePage(): JSX.Element {
   return (
     <>
       <HeroBanner
