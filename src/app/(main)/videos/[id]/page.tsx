@@ -8,6 +8,12 @@ import { fetchVideoById } from '@/lib/data/videos';
 
 import { VideoDetailClient } from './video-detail-client';
 
+/**
+ * Props for the video detail page.
+ *
+ * @type {Props}
+ * @property {Promise<{ id: string }>} params - Route parameters including video ID.
+ */
 interface Props {
   params: Promise<{ id: string }>;
 }
@@ -15,8 +21,8 @@ interface Props {
 /**
  * Generate metadata for the video detail page.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.params - Route parameters including video ID.
+ * @param {{ params: Promise<{ id: string }> }} props - Component props.
+ * @param {{ id: string }} [props.params] - Route parameters including video ID.
  *
  * @returns {JSX.Element} The page metadata.
  */
@@ -31,8 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 /**
  * Video detail page — shows video report with content warning gate.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.params - Route parameters including video ID.
+ * @param {{ params: Promise<{ id: string }> }} props - Component props.
+ * @param {{ id: string }} [props.params] - Route parameters including video ID.
  *
  * @returns {Promise<JSX.Element>} The video detail page content.
  */

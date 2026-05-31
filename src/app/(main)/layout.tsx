@@ -8,8 +8,8 @@ import { SiteWarningGate } from '@/components/warnings/site-warning-gate';
  * Main site layout — wraps all public pages with header, emergency banner,
  * content area, and footer.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.children - Child content to render.
+ * @param {{ children: ReactNode }} props - Component props.
+ * @param {ReactNode} [props.children] - Child content to render.
  *
  * @returns {ReactNode} The layout with header, content, and footer.
  */
