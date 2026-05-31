@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useTransition, type SubmitEvent } from 'react';
+import { useState, useTransition, type JSX, type SubmitEvent } from 'react';
 
 import { AlertTriangle, ShieldCheck, Send, CheckCircle, Loader2 } from 'lucide-react';
 import Link from 'next/link';
@@ -35,7 +35,7 @@ const RATE_LIMIT_KEY = 'instapaws-last-submit';
  *
  * @returns {JSX.Element} The submission form or success state.
  */
-export function SubmitFormClient() {
+export function SubmitFormClient(): JSX.Element {
   const [submitted, setSubmitted] = useState(false);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState('');
