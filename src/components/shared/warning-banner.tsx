@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { AlertTriangle } from 'lucide-react';
 
 import { Container } from '@/components/layout/container';
@@ -21,7 +23,7 @@ interface WarningBannerProps {
  * @param {unknown} props.variant - Visual variant. Default 'destructive'.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The warning banner element.
+ * @returns {JSX.Element} The warning banner element.
  */
 export function WarningBanner({
   title,
@@ -29,7 +31,7 @@ export function WarningBanner({
   children,
   variant = 'destructive',
   className,
-}: WarningBannerProps) {
+}: WarningBannerProps): JSX.Element {
   return (
     <div
       className={cn(
