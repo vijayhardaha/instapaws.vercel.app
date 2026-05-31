@@ -3,7 +3,7 @@ import { useEffect, type RefObject } from 'react';
 /**
  * Hook that calls a callback when a click or touch occurs outside the referenced element.
  *
- * @param {unknown} ref - React ref to the element being watched.
+ * @param {RefObject<HTMLDivElement | null>} ref - React ref to the element being watched.
  * @param {(event: MouseEvent | TouchEvent) => void} callback - Function called when outside click is detected.
  */
 export const useOutsideClick = (ref: RefObject<HTMLDivElement | null>, callback: Function) => {
