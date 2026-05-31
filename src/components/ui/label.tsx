@@ -1,6 +1,6 @@
 'use client';
 
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { Label as LabelPrimitive } from 'radix-ui';
 
@@ -12,9 +12,9 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The label element.
+ * @returns {JSX.Element} The label element.
  */
-function Label({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>) {
+function Label({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>): JSX.Element {
   return (
     <LabelPrimitive.Root
       data-slot="label"
