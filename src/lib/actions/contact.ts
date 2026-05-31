@@ -8,6 +8,13 @@ import { headers } from 'next/headers';
 
 import { checkSubmissionRate, getClientIp, rateLimitMessage } from '@/lib/rate-limiter';
 
+/**
+ * Result returned by the contact form server action.
+ *
+ * @type {ActionResult}
+ * @property {boolean} success - Whether the submission succeeded.
+ * @property {string} [error] - Error message if the submission failed.
+ */
 interface ActionResult {
   success: boolean;
   error?: string;
