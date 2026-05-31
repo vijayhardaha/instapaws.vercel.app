@@ -22,22 +22,21 @@ const toggleVariants = cva(
   }
 );
 
+interface ToggleProps extends ComponentProps<typeof TogglePrimitive.Root>, VariantProps<typeof toggleVariants> {}
+
 /**
  * Toggle component built on Radix UI primitive with CVA variants.
  *
- * @param {unknown} props - Component props extending Radix Toggle root.
- * @param {unknown} props.className - Additional CSS class names.
- * @param {unknown} props.variant - Visual variant (default | outline).
- * @param {unknown} props.size - Size variant (default | sm | lg).
+ * @param {ToggleProps} props - Component props extending Radix Toggle root.
+ * @param {string} [props.className] - Additional CSS class names.
+ * @param {'default' | 'outline'} [props.variant] - Visual variant.
+ * @param {'default' | 'sm' | 'lg'} [props.size] - Size variant.
  *
  * @returns {JSX.Element} A toggle button with CVA styling.
+ *
+ * @type {ToggleProps}
  */
-function Toggle({
-  className,
-  variant = 'default',
-  size = 'default',
-  ...props
-}: ComponentProps<typeof TogglePrimitive.Root> & VariantProps<typeof toggleVariants>): JSX.Element {
+function Toggle({ className, variant = 'default', size = 'default', ...props }: ToggleProps): JSX.Element {
   return (
     <TogglePrimitive.Root data-slot="toggle" className={cn(toggleVariants({ variant, size, className }))} {...props} />
   );
