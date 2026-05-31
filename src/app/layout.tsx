@@ -54,8 +54,8 @@ export const viewport: Viewport = { themeColor: '#2C2C2C', width: 'device-width'
  * Root layout — defines <html> and <body> tags, font loading.
  * Metadata is handled above.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.children - Child content to render.
+ * @param {{ children: ReactNode }} props - Component props.
+ * @param {ReactNode} [props.children] - Child content to render.
  *
  * @returns {ReactNode} The root HTML document structure.
  */
