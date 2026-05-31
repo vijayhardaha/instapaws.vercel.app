@@ -13,12 +13,12 @@ interface SectionHeadingProps {
 /**
  * Reusable section heading with optional tag label and description.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.tag - Optional tag label displayed above the title.
- * @param {unknown} props.title - Main heading content.
- * @param {unknown} props.description - Optional descriptive text below the title.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.align - Text alignment. Default 'left'.
+ * @param {SectionHeadingProps} props - Component props.
+ * @param {string} [props.tag] - Optional tag label displayed above the title.
+ * @param {ReactNode} [props.title] - Main heading content.
+ * @param {string} [props.description] - Optional descriptive text below the title.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {string} [props.align] - Text alignment. Default 'left'.
  *
  * @returns {JSX.Element} Section heading with optional tag and description.
  */
