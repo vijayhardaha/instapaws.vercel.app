@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { cva, type VariantProps } from 'class-variance-authority';
 
@@ -26,13 +26,13 @@ const buttonGroupVariants = cva(
  * @param {unknown} props.className - Additional CSS classes.
  * @param {unknown} props.orientation - Layout orientation.
  *
- * @returns {unknown} The button group element.
+ * @returns {JSX.Element} The button group element.
  */
 function ButtonGroup({
   className,
   orientation,
   ...props
-}: ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>) {
+}: ComponentProps<'div'> & VariantProps<typeof buttonGroupVariants>): JSX.Element {
   return (
     <div
       role="group"
