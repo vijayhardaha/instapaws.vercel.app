@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -8,9 +8,9 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The pagination navigation element.
+ * @returns {JSX.Element} The pagination navigation element.
  */
-function Pagination({ className, ...props }: ComponentProps<'nav'>) {
+function Pagination({ className, ...props }: ComponentProps<'nav'>): JSX.Element {
   return (
     <nav
       role="navigation"
