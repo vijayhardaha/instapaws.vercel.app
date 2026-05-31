@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 import { Container } from '@/components/layout/container';
 
@@ -26,7 +26,7 @@ interface CtaSectionProps {
  *
  * @returns {JSX.Element} CTA section with heading, description, and action buttons.
  */
-export function CtaSection({ title, description, buttons }: CtaSectionProps) {
+export function CtaSection({ title, description, buttons }: CtaSectionProps): JSX.Element {
   return (
     <section className="bg-primary text-primary-foreground">
       <Container className="py-16 text-center">
