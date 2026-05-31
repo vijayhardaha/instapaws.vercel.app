@@ -9,9 +9,9 @@ type NativeSelectProps = Omit<ComponentProps<'select'>, 'size'> & { size?: 'sm' 
 /**
  * Native select dropdown component using the browser's built-in select.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.size - Select size variant.
+ * @param {NativeSelectProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {string} [props.size] - Select size variant.
  *
  * @returns {JSX.Element} The native select element.
  */
