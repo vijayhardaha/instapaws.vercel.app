@@ -1,5 +1,7 @@
 'use client';
 
+import type { JSX } from 'react';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -14,9 +16,9 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props.className - Additional CSS classes.
  * @param {unknown} props.mobile - Whether to render in mobile mode.
  *
- * @returns {unknown} The navigation element.
+ * @returns {JSX.Element} The navigation element.
  */
-export function NavLinks({ className, mobile }: { className?: string; mobile?: boolean }) {
+export function NavLinks({ className, mobile }: { className?: string; mobile?: boolean }): JSX.Element {
   const pathname = usePathname();
 
   return (
