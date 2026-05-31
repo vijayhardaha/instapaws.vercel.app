@@ -8,7 +8,7 @@ import { Solway, Zilla_Slab, Courier_Prime } from 'next/font/google';
 export const headingFont = Solway({
   variable: '--font-heading',
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
+  weight: ['400', '500', '700', '800'],
   display: 'swap',
   preload: true,
 });
