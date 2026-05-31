@@ -15,6 +15,18 @@ import { motion } from 'motion/react';
 
 import { cn } from '@/lib/utils';
 
+/**
+ * Props for the animated noise background component.
+ *
+ * @type {NoiseBackgroundProps}
+ * @property {ReactNode} [children] - Content to display above the background.
+ * @property {string} [className] - CSS classes for the content wrapper.
+ * @property {string} [containerClassName] - CSS classes for the outer container.
+ * @property {string[]} [gradientColors] - CSS color strings for gradient layers.
+ * @property {number} [noiseIntensity] - Opacity of the noise overlay (0–1). Default 0.15.
+ * @property {number} [speed] - Animation speed multiplier. Default 0.1.
+ * @property {boolean} [animating] - Whether gradients animate. Default true.
+ */
 interface NoiseBackgroundProps {
   children?: ReactNode;
   className?: string;
@@ -25,13 +37,14 @@ interface NoiseBackgroundProps {
   animating?: boolean;
 }
 
+/** Default gradient colors for the noise background. */
 const DEFAULT_GRADIENTS = ['rgb(255, 100, 150)', 'rgb(100, 150, 255)', 'rgb(255, 200, 100)'];
 
 /**
  * SVG-based noise texture rendered as a data URI for the grain overlay.
  * Creates a subtle film grain effect.
  *
- * @param {unknown} intensity - Noise opacity intensity (0–1).
+ * @param {number} intensity - Noise opacity intensity (0–1).
  *
  * @returns {string} A data URI string of the noise SVG.
  */
@@ -53,14 +66,14 @@ function noiseSvg(intensity: number): string {
  * Animated background with configurable gradient layers and noise texture.
  * Wraps children in a container with the effect behind them.
  *
- * @param {unknown} props - Component props
- * @param {unknown} props.children - Content to display above the background
- * @param {unknown} props.className - Classes for the content wrapper
- * @param {unknown} props.containerClassName - Classes for the outer container
- * @param {unknown} props.gradientColors - Array of CSS color strings for gradient layers
- * @param {unknown} props.noiseIntensity - Opacity of the noise overlay (0–1, default 0.15)
- * @param {unknown} props.speed - Animation speed multiplier (default 0.1)
- * @param {unknown} props.animating - Whether gradients animate (default true)
+ * @param {NoiseBackgroundProps} props - Component props
+ * @param {ReactNode} [props.children] - Content to display above the background
+ * @param {string} [props.className] - Classes for the content wrapper
+ * @param {string} [props.containerClassName] - Classes for the outer container
+ * @param {string[]} [props.gradientColors] - Array of CSS color strings for gradient layers
+ * @param {number} [props.noiseIntensity] - Opacity of the noise overlay (0–1, default 0.15)
+ * @param {number} [props.speed] - Animation speed multiplier (default 0.1)
+ * @param {boolean} [props.animating] - Whether gradients animate (default true)
  *
  * @returns {ReactNode} A container with animated gradient and noise background wrapping children.
  */
