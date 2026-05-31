@@ -20,6 +20,7 @@ import {
   type VideoReport,
 } from '@/lib/types';
 
+/** All available abuse type filter options. */
 const ALL_ABUSE_TYPES: AbuseType[] = [
   'physical-abuse',
   'neglect',
@@ -31,6 +32,7 @@ const ALL_ABUSE_TYPES: AbuseType[] = [
   'other',
 ];
 
+/** All available report status filter options. */
 const ALL_STATUSES: ReportStatus[] = [
   'pending-review',
   'under-investigation',
@@ -40,22 +42,30 @@ const ALL_STATUSES: ReportStatus[] = [
   'escalated',
 ];
 
+/**
+ * Props for the video library client component.
+ *
+ * @type {Props}
+ * @property {VideoReport[]} [initialVideos] - Initial list of videos to display.
+ * @property {number} [initialTotal] - Total number of available videos.
+ */
 interface Props {
   initialVideos?: VideoReport[];
   initialTotal?: number;
 }
 
+/** Number of videos to display per page. */
 const PAGE_SIZE = 12;
 
 /**
  * Filter a list of videos by search query, abuse type, status, and graphic content flag.
  *
- * @param {unknown} videos - List of video reports to filter.
- * @param {unknown} searchQuery - Search query string.
- * @param {unknown} abuseFilter - Abuse type filter value.
- * @param {unknown} statusFilter - Status filter value.
- * @param {unknown} showGraphic - Whether to include graphic content.
- * @param {unknown} sortBy - Sort order.
+ * @param {VideoReport[]} videos - List of video reports to filter.
+ * @param {string} searchQuery - Search query string.
+ * @param {string} abuseFilter - Abuse type filter value.
+ * @param {string} statusFilter - Status filter value.
+ * @param {boolean} showGraphic - Whether to include graphic content.
+ * @param {string} sortBy - Sort order.
  *
  * @returns {JSX.Element} The filtered and sorted video list.
  */
@@ -94,9 +104,9 @@ function filterVideos(
 /**
  * Video library with search, filter, sort, and pagination.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.initialVideos - Initial list of videos to display.
- * @param {unknown} props.initialTotal - Total number of available videos.
+ * @param {{ initialVideos?: VideoReport[]; initialTotal?: number }} props - Component props.
+ * @param {VideoReport[]} [props.initialVideos] - Initial list of videos to display.
+ * @param {number} [props.initialTotal] - Total number of available videos.
  *
  * @returns {JSX.Element} The video library with search, filters, and pagination.
  */
