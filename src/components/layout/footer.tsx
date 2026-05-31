@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Link from 'next/link';
 
 import { Container } from '@/components/layout/container';
@@ -8,9 +10,9 @@ import { FOOTER_NAV_COLUMNS, SITE } from '@/lib/constants';
 /**
  * Site footer with navigation columns, tagline, and legal disclaimer.
  *
- * @returns {unknown} The footer element.
+ * @returns {JSX.Element} The footer element.
  */
-export function Footer() {
+export function Footer(): JSX.Element {
   return (
     <footer className="border-border bg-muted/50 border-t">
       <Container className="py-12">
