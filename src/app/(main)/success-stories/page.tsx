@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Flag } from 'lucide-react';
 import type { Metadata } from 'next';
 
@@ -18,9 +20,9 @@ export const metadata: Metadata = {
 /**
  * Success Stories page — stats grid and story cards.
  *
- * @returns {unknown} The success stories page content.
+ * @returns {Promise<JSX.Element>} The success stories page content.
  */
-export default async function SuccessStoriesPage() {
+export default async function SuccessStoriesPage(): Promise<JSX.Element> {
   const stories = await fetchSuccessStories();
 
   return (
