@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -20,9 +20,15 @@ interface SectionHeadingProps {
  * @param {unknown} props.className - Additional CSS classes.
  * @param {unknown} props.align - Text alignment. Default 'left'.
  *
- * @returns {unknown} Section heading with optional tag and description.
+ * @returns {JSX.Element} Section heading with optional tag and description.
  */
-export function SectionHeading({ tag, title, description, className, align = 'left' }: SectionHeadingProps) {
+export function SectionHeading({
+  tag,
+  title,
+  description,
+  className,
+  align = 'left',
+}: SectionHeadingProps): JSX.Element {
   return (
     <div className={cn(align === 'center' && 'mx-auto text-center', className)}>
       {tag && <p className="text-accent mb-2 text-xs font-semibold tracking-widest uppercase">{tag}</p>}
