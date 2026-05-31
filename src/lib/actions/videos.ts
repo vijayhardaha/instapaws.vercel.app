@@ -11,15 +11,31 @@ import { checkSubmissionRate, getClientIp, rateLimitMessage } from '@/lib/rate-l
 import { isSupabaseConfigured, supabaseUrl, supabaseServiceRoleKey } from '@/lib/supabase/config';
 import type { Database } from '@/lib/supabase/database.types';
 
+/** Shape for inserting a new video report into the database. */
 type VideoInsert = Database['public']['Tables']['videos']['Insert'];
+
+/** Shape for updating an existing video report in the database. */
 type VideoUpdate = Database['public']['Tables']['videos']['Update'];
 
+/**
+ * Result returned by all video server actions.
+ *
+ * @type {ActionResult}
+ * @property {boolean} success - Whether the action succeeded.
+ * @property {string} [error] - Error message if the action failed.
+ * @property {unknown} [data] - Optional response payload.
+ */
 interface ActionResult {
   success: boolean;
   error?: string;
   data?: unknown;
 }
 
+/**
+ * Create a Supabase admin client if configured.
+ *
+ * @returns {ReturnType<typeof createClient> | null} The database client, or null if not configured.
+ */
 function getDb() {
   if (!isSupabaseConfigured()) return null;
 
@@ -28,6 +44,13 @@ function getDb() {
   }) as any;
 }
 
+/**
+ * Extract clean Instagram URL and generate an embed URL.
+ *
+ * @param {string} url - Raw Instagram URL input.
+ *
+ * @returns {{ instagramUrl: string; embedUrl: string }} Object with cleaned URL and embed URL.
+ */
 function extractInstagramUrl(url: string) {
   const clean = url.trim();
   return { instagramUrl: clean, embedUrl: `${clean}embed` };
