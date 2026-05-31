@@ -10,7 +10,8 @@
     "tsc": "tsc --noEmit",
     "ts:fix": "bun run scripts/add-return-types.ts",
     "format": "prettier --write --log-level error .",
-    "format:check": "prettier --check --log-level error ."
+    "format:check": "prettier --check --log-level error .",
+    "prepare": "husky"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",
