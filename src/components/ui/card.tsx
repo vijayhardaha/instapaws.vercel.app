@@ -2,20 +2,23 @@ import { type ComponentProps, type JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
+interface CardProps extends ComponentProps<'div'> {
+  /** Card size variant. */
+  size?: 'default' | 'sm';
+}
+
 /**
  * Card container component.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.size - Card size variant.
+ * @param {CardProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {'default' | 'sm'} [props.size] - Card size variant.
  *
  * @returns {JSX.Element} The card element.
+ *
+ * @type {CardProps}
  */
-function Card({
-  className,
-  size = 'default',
-  ...props
-}: ComponentProps<'div'> & { size?: 'default' | 'sm' }): JSX.Element {
+function Card({ className, size = 'default', ...props }: CardProps): JSX.Element {
   return (
     <div
       data-slot="card"
@@ -40,15 +43,19 @@ function Card({
   );
 }
 
+interface CardHeaderProps extends ComponentProps<'div'> {}
+
 /**
  * Card header section.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {CardHeaderProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The card header element.
+ *
+ * @type {CardHeaderProps}
  */
-function CardHeader({ className, ...props }: ComponentProps<'div'>): JSX.Element {
+function CardHeader({ className, ...props }: CardHeaderProps): JSX.Element {
   return (
     <div
       data-slot="card-header"
@@ -74,15 +81,19 @@ function CardHeader({ className, ...props }: ComponentProps<'div'>): JSX.Element
   );
 }
 
+interface CardTitleProps extends ComponentProps<'div'> {}
+
 /**
  * Card title subcomponent.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {CardTitleProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The card title element.
+ *
+ * @type {CardTitleProps}
  */
-function CardTitle({ className, ...props }: ComponentProps<'div'>): JSX.Element {
+function CardTitle({ className, ...props }: CardTitleProps): JSX.Element {
   return (
     <div
       data-slot="card-title"
@@ -100,27 +111,35 @@ function CardTitle({ className, ...props }: ComponentProps<'div'>): JSX.Element 
   );
 }
 
+interface CardDescriptionProps extends ComponentProps<'div'> {}
+
 /**
  * Card description subcomponent.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {CardDescriptionProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The card description element.
+ *
+ * @type {CardDescriptionProps}
  */
-function CardDescription({ className, ...props }: ComponentProps<'div'>): JSX.Element {
+function CardDescription({ className, ...props }: CardDescriptionProps): JSX.Element {
   return <div data-slot="card-description" className={cn('text-muted-foreground text-sm', className)} {...props} />;
 }
+
+interface CardActionProps extends ComponentProps<'div'> {}
 
 /**
  * Card action subcomponent — positioned in the top-right of the header.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {CardActionProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The card action element.
+ *
+ * @type {CardActionProps}
  */
-function CardAction({ className, ...props }: ComponentProps<'div'>): JSX.Element {
+function CardAction({ className, ...props }: CardActionProps): JSX.Element {
   return (
     <div
       data-slot="card-action"
@@ -130,27 +149,35 @@ function CardAction({ className, ...props }: ComponentProps<'div'>): JSX.Element
   );
 }
 
+interface CardContentProps extends ComponentProps<'div'> {}
+
 /**
  * Card content section.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {CardContentProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The card content element.
+ *
+ * @type {CardContentProps}
  */
-function CardContent({ className, ...props }: ComponentProps<'div'>): JSX.Element {
+function CardContent({ className, ...props }: CardContentProps): JSX.Element {
   return <div data-slot="card-content" className={cn('px-4 group-data-[size=sm]/card:px-3', className)} {...props} />;
 }
+
+interface CardFooterProps extends ComponentProps<'div'> {}
 
 /**
  * Card footer section.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {CardFooterProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The card footer element.
+ *
+ * @type {CardFooterProps}
  */
-function CardFooter({ className, ...props }: ComponentProps<'div'>): JSX.Element {
+function CardFooter({ className, ...props }: CardFooterProps): JSX.Element {
   return (
     <div
       data-slot="card-footer"
