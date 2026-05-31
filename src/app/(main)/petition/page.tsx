@@ -4,6 +4,7 @@ import { PenLine, CheckCircle2, Share2 } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import { Container } from '@/components/layout/container';
 import { CtaSection } from '@/components/shared/cta-section';
 import { HeroBanner } from '@/components/shared/hero-banner';
 import { SectionHeading } from '@/components/shared/section-heading';
@@ -63,18 +64,18 @@ export default function PetitionPage(): JSX.Element {
       />
 
       <section className="border-border bg-background border-b">
-        <div className="px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
             <StatCard value={CURRENT_SIGNATURES.toLocaleString()} label="Signatures" />
             <StatCard value={SIGNATURE_GOAL.toLocaleString()} label="Goal" />
             <StatCard value="47" label="Videos Flagged" />
             <StatCard value="14" label="Investigations" />
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-muted/30 border-b">
-        <div className="px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Progress"
             title="Petition Status"
@@ -89,11 +90,11 @@ export default function PetitionPage(): JSX.Element {
               <div className="bg-accent h-full rounded-full transition-all" style={{ width: `${PROGRESS_PERCENT}%` }} />
             </div>
           </div>
-        </div>
+        </Container>
       </section>
 
       <section className="border-border bg-background border-b">
-        <div className="px-4 py-16 sm:px-6 lg:px-8">
+        <Container className="py-16">
           <SectionHeading
             tag="Our Demands"
             title="What We Are Asking For"
@@ -116,7 +117,7 @@ export default function PetitionPage(): JSX.Element {
               </Card>
             ))}
           </div>
-        </div>
+        </Container>
       </section>
 
       <CtaSection
@@ -129,7 +130,7 @@ export default function PetitionPage(): JSX.Element {
       />
 
       <section className="bg-muted/50">
-        <div className="px-4 py-12 text-center sm:px-6 lg:px-8">
+        <Container className="py-12">
           <p className="text-muted-foreground text-sm">
             Want to do more?{' '}
             <Link href="/submit" className="hover:text-foreground font-semibold underline">
@@ -141,7 +142,7 @@ export default function PetitionPage(): JSX.Element {
             </Link>
             .
           </p>
-        </div>
+        </Container>
       </section>
     </>
   );
