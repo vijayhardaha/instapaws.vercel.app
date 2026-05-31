@@ -6,15 +6,19 @@ import { Label as LabelPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
+interface LabelProps extends ComponentProps<typeof LabelPrimitive.Root> {}
+
 /**
  * Label component.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {LabelProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The label element.
+ *
+ * @type {LabelProps}
  */
-function Label({ className, ...props }: ComponentProps<typeof LabelPrimitive.Root>): JSX.Element {
+function Label({ className, ...props }: LabelProps): JSX.Element {
   return (
     <LabelPrimitive.Root
       data-slot="label"
