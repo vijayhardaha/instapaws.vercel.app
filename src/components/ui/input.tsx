@@ -17,7 +17,28 @@ function Input({ className, type, ...props }: ComponentProps<'input'>): JSX.Elem
       type={type}
       data-slot="input"
       className={cn(
-        'border-input file:text-foreground placeholder:text-muted-foreground focus-visible:border-ring focus-visible:ring-ring/50 disabled:bg-input/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 h-8 w-full min-w-0 rounded-lg border bg-transparent px-2.5 py-1 text-base transition-colors outline-none file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-semibold focus-visible:ring-3 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3 md:text-sm',
+        [
+          // Size and spacing
+          'h-8 w-full min-w-0 px-2.5 py-1',
+          // Border and background
+          'border-input rounded-lg border bg-transparent',
+          // Text styling
+          'text-base md:text-sm',
+          // Transitions and interactions
+          'transition-colors outline-none',
+          // Placeholder styling
+          'placeholder:text-muted-foreground',
+          // File input styling
+          'file:text-foreground file:inline-flex file:h-6 file:border-0 file:bg-transparent file:text-sm file:font-semibold',
+          // Focus states
+          'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3',
+          // Disabled states
+          'disabled:bg-input/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50',
+          // Aria-invalid states
+          'aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-invalid:ring-3',
+          // Dark mode
+          'dark:bg-input/30 dark:disabled:bg-input/80 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40',
+        ].join(' '),
         className
       )}
       {...props}
