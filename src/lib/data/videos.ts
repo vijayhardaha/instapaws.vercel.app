@@ -8,6 +8,7 @@ import type { Database } from '@/lib/supabase/database.types';
 import { createClient } from '@/lib/supabase/server';
 import type { VideoReport, SuccessStory } from '@/lib/types';
 
+/** A single row from the videos database table. */
 type DbVideo = Database['public']['Tables']['videos']['Row'];
 
 /**
@@ -58,6 +59,18 @@ function dbStoryToStory(row: Database['public']['Tables']['success_stories']['Ro
   };
 }
 
+/**
+ * Filtering, search, sort, and pagination options for video queries.
+ *
+ * @type {VideoFilters}
+ * @property {string} [search] - Free-text search against description and location.
+ * @property {string} [abuseType] - Filter by abuse type category.
+ * @property {string} [status] - Filter by report lifecycle status.
+ * @property {boolean} [showGraphic] - Whether to include graphic content.
+ * @property {'newest' | 'oldest' | 'status'} [sortBy] - Sort order for results.
+ * @property {number} [page] - Page number for pagination.
+ * @property {number} [pageSize] - Number of results per page.
+ */
 export interface VideoFilters {
   search?: string;
   abuseType?: string;
