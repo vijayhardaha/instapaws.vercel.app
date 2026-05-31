@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
@@ -16,7 +18,7 @@ interface Props {
  * @param {unknown} props - Component props.
  * @param {unknown} props.params - Route parameters including video ID.
  *
- * @returns {unknown} The page metadata.
+ * @returns {JSX.Element} The page metadata.
  */
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
@@ -32,9 +34,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
  * @param {unknown} props - Component props.
  * @param {unknown} props.params - Route parameters including video ID.
  *
- * @returns {unknown} The video detail page content.
+ * @returns {Promise<JSX.Element>} The video detail page content.
  */
-export default async function VideoDetailPage({ params }: Props) {
+export default async function VideoDetailPage({ params }: Props): Promise<JSX.Element> {
   const { id } = await params;
   const video = await fetchVideoById(id);
   if (!video) notFound();
