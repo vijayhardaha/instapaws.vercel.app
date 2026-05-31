@@ -16,7 +16,7 @@ let client: ReturnType<typeof createBrowserClient<Database>> | null = null;
  *
  * @throws {Error} Throws if Supabase is not configured.
  */
-export function createClient() {
+export function createClient(): ReturnType<typeof createBrowserClient<Database>> {
   if (!isSupabaseConfigured()) {
     throw new Error('Supabase is not configured');
   }
@@ -33,7 +33,7 @@ export function createClient() {
  *
  * @returns {ReturnType<typeof createBrowserClient<Database>> | null} The Supabase client, or null if not configured.
  */
-export function getSupabaseBrowserClient() {
+export function getSupabaseBrowserClient(): ReturnType<typeof createBrowserClient<Database>> | null {
   if (!isSupabaseConfigured()) return null;
   return createClient();
 }
