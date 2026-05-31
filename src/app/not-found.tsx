@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { ShieldAlert, ArrowLeft, Flag } from 'lucide-react';
 import Link from 'next/link';
 
@@ -7,9 +9,9 @@ import { Button } from '@/components/ui/button';
  * Custom 404 page — informs the user the page doesn't exist
  * and offers clear navigation paths back into the site.
  *
- * @returns {unknown} The not-found page content.
+ * @returns {JSX.Element} The not-found page content.
  */
-export default function NotFound() {
+export default function NotFound(): JSX.Element {
   return (
     <div className="flex min-h-[70vh] flex-col items-center justify-center px-4 py-16 text-center">
       <div className="bg-accent/10 mb-6 flex h-20 w-20 items-center justify-center rounded-full">
