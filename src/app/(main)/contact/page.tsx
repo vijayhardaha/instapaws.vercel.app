@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import type { Metadata } from 'next';
 
 import { ContactFormClient } from '@/components/forms/contact-form-client';
@@ -15,9 +17,9 @@ export const metadata: Metadata = {
 /**
  * Contact page with form submission and partnership info.
  *
- * @returns {unknown} The contact page content.
+ * @returns {JSX.Element} The contact page content.
  */
-export default function ContactPage() {
+export default function ContactPage(): JSX.Element {
   return (
     <>
       <section className="border-border bg-primary text-primary-foreground border-b">
