@@ -6,6 +6,15 @@ import Link from 'next/link';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 
+/**
+ * Call-to-action configuration for an action card.
+ *
+ * @type {ActionCardCta}
+ * @property {string} label - Button label text.
+ * @property {string} href - Destination URL.
+ * @property {'primary' | 'outline'} [variant] - Button variant style.
+ * @property {boolean} [external] - Whether the link opens in a new tab.
+ */
 interface ActionCardCta {
   label: string;
   href: string;
@@ -13,6 +22,15 @@ interface ActionCardCta {
   external?: boolean;
 }
 
+/**
+ * A single action card displayed in the grid.
+ *
+ * @type {ActionCard}
+ * @property {ReactNode} icon - Icon element to display.
+ * @property {string} title - Card heading.
+ * @property {string} description - Card description text.
+ * @property {ActionCardCta} cta - Call-to-action configuration.
+ */
 interface ActionCard {
   icon: ReactNode;
   title: string;
@@ -20,15 +38,30 @@ interface ActionCard {
   cta: ActionCardCta;
 }
 
+/**
+ * Props for the action cards grid component.
+ *
+ * @type {ActionCardsProps}
+ * @property {ActionCard[]} cards - Array of action card data.
+ */
 interface ActionCardsProps {
   cards: ActionCard[];
 }
 
+/** Visual variant classes for CTA links. */
 const CTA_VARIANTS = {
   primary: 'bg-primary text-primary-foreground hover:bg-primary/90 border border-transparent',
   outline: 'border-border text-foreground hover:bg-muted border',
 } as const;
 
+/**
+ * Props for the internal CTA link component.
+ *
+ * @type {CtaLinkProps}
+ * @property {'primary' | 'outline'} variant - Button variant style.
+ * @property {boolean} [external] - Whether the link opens in a new tab.
+ * @property {ReactNode} children - Link content.
+ */
 interface CtaLinkProps extends ComponentPropsWithoutRef<'a'> {
   variant: 'primary' | 'outline';
   external?: boolean;
@@ -63,8 +96,8 @@ function CtaLink({ variant, external, children, className, ...props }: CtaLinkPr
  * Grid of action cards with icon, title, description, and CTA button.
  * Used on the homepage "How You Can Help" section.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.cards - Array of action card data.
+ * @param {ActionCardsProps} props - Component props.
+ * @param {ActionCard[]} [props.cards] - Array of action card data.
  *
  * @returns {JSX.Element} The action cards grid.
  */
