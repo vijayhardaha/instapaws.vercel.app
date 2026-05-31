@@ -1,6 +1,6 @@
 'use client';
 
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
 
@@ -9,9 +9,9 @@ import { AlertDialog as AlertDialogPrimitive } from 'radix-ui';
  *
  * @param {unknown} props - Component props forwarded to the Radix root.
  *
- * @returns {unknown} The alert dialog component.
+ * @returns {JSX.Element} The alert dialog component.
  */
-function AlertDialog({ ...props }: ComponentProps<typeof AlertDialogPrimitive.Root>) {
+function AlertDialog({ ...props }: ComponentProps<typeof AlertDialogPrimitive.Root>): JSX.Element {
   return <AlertDialogPrimitive.Root data-slot="alert-dialog" {...props} />;
 }
 
