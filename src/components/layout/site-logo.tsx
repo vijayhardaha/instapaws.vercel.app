@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import Link from 'next/link';
 
 /**
@@ -7,9 +9,9 @@ import Link from 'next/link';
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The site logo element.
+ * @returns {JSX.Element} The site logo element.
  */
-export function SiteLogo({ className }: { className?: string }) {
+export function SiteLogo({ className }: { className?: string }): JSX.Element {
   return (
     <Link href="/" className={`flex items-center gap-0.5 ${className ?? ''}`} aria-label="InstaPaws — Home">
       {/* Paw print icon */}
