@@ -1,6 +1,6 @@
 'use client';
 
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { HoverCard as HoverCardPrimitive } from 'radix-ui';
 
@@ -9,9 +9,9 @@ import { HoverCard as HoverCardPrimitive } from 'radix-ui';
  *
  * @param {unknown} props - Component props forwarded to the Radix root.
  *
- * @returns {unknown} The hover card component.
+ * @returns {JSX.Element} The hover card component.
  */
-function HoverCard({ ...props }: ComponentProps<typeof HoverCardPrimitive.Root>) {
+function HoverCard({ ...props }: ComponentProps<typeof HoverCardPrimitive.Root>): JSX.Element {
   return <HoverCardPrimitive.Root data-slot="hover-card" {...props} />;
 }
 
