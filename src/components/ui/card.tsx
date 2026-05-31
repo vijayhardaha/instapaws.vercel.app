@@ -1,4 +1,4 @@
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { cn } from '@/lib/utils';
 
@@ -9,9 +9,13 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props.className - Additional CSS classes.
  * @param {unknown} props.size - Card size variant.
  *
- * @returns {unknown} The card element.
+ * @returns {JSX.Element} The card element.
  */
-function Card({ className, size = 'default', ...props }: ComponentProps<'div'> & { size?: 'default' | 'sm' }) {
+function Card({
+  className,
+  size = 'default',
+  ...props
+}: ComponentProps<'div'> & { size?: 'default' | 'sm' }): JSX.Element {
   return (
     <div
       data-slot="card"
@@ -31,9 +35,9 @@ function Card({ className, size = 'default', ...props }: ComponentProps<'div'> &
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The card header element.
+ * @returns {JSX.Element} The card header element.
  */
-function CardHeader({ className, ...props }: ComponentProps<'div'>) {
+function CardHeader({ className, ...props }: ComponentProps<'div'>): JSX.Element {
   return (
     <div
       data-slot="card-header"
@@ -52,9 +56,9 @@ function CardHeader({ className, ...props }: ComponentProps<'div'>) {
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The card title element.
+ * @returns {JSX.Element} The card title element.
  */
-function CardTitle({ className, ...props }: ComponentProps<'div'>) {
+function CardTitle({ className, ...props }: ComponentProps<'div'>): JSX.Element {
   return (
     <div
       data-slot="card-title"
@@ -70,9 +74,9 @@ function CardTitle({ className, ...props }: ComponentProps<'div'>) {
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The card description element.
+ * @returns {JSX.Element} The card description element.
  */
-function CardDescription({ className, ...props }: ComponentProps<'div'>) {
+function CardDescription({ className, ...props }: ComponentProps<'div'>): JSX.Element {
   return <div data-slot="card-description" className={cn('text-muted-foreground text-sm', className)} {...props} />;
 }
 
@@ -82,9 +86,9 @@ function CardDescription({ className, ...props }: ComponentProps<'div'>) {
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The card action element.
+ * @returns {JSX.Element} The card action element.
  */
-function CardAction({ className, ...props }: ComponentProps<'div'>) {
+function CardAction({ className, ...props }: ComponentProps<'div'>): JSX.Element {
   return (
     <div
       data-slot="card-action"
@@ -100,9 +104,9 @@ function CardAction({ className, ...props }: ComponentProps<'div'>) {
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The card content element.
+ * @returns {JSX.Element} The card content element.
  */
-function CardContent({ className, ...props }: ComponentProps<'div'>) {
+function CardContent({ className, ...props }: ComponentProps<'div'>): JSX.Element {
   return <div data-slot="card-content" className={cn('px-4 group-data-[size=sm]/card:px-3', className)} {...props} />;
 }
 
@@ -112,9 +116,9 @@ function CardContent({ className, ...props }: ComponentProps<'div'>) {
  * @param {unknown} props - Component props.
  * @param {unknown} props.className - Additional CSS classes.
  *
- * @returns {unknown} The card footer element.
+ * @returns {JSX.Element} The card footer element.
  */
-function CardFooter({ className, ...props }: ComponentProps<'div'>) {
+function CardFooter({ className, ...props }: ComponentProps<'div'>): JSX.Element {
   return (
     <div
       data-slot="card-footer"
