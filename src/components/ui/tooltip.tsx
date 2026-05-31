@@ -4,14 +4,18 @@ import { type ComponentProps, type JSX } from 'react';
 
 import { Tooltip as TooltipPrimitive } from 'radix-ui';
 
+interface TooltipProps extends ComponentProps<typeof TooltipPrimitive.Root> {}
+
 /**
  * Tooltip component built on Radix UI Tooltip primitive.
  *
- * @param {unknown} props - Component props extending Radix Tooltip root.
+ * @param {TooltipProps} props - Component props extending Radix Tooltip root.
  *
  * @returns {JSX.Element} A tooltip trigger wrapping the children.
+ *
+ * @type {TooltipProps}
  */
-function Tooltip({ ...props }: ComponentProps<typeof TooltipPrimitive.Root>): JSX.Element {
+function Tooltip({ ...props }: TooltipProps): JSX.Element {
   return <TooltipPrimitive.Root data-slot="tooltip" {...props} />;
 }
 
