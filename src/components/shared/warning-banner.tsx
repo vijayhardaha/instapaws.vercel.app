@@ -1,14 +1,24 @@
-import type { JSX } from 'react';
+import type { JSX, ReactNode } from 'react';
 
 import { AlertTriangle } from 'lucide-react';
 
 import { Container } from '@/components/layout/container';
 import { cn } from '@/lib/utils';
 
+/**
+ * Props for the warning banner component.
+ *
+ * @type {WarningBannerProps}
+ * @property {string} title - Banner title text.
+ * @property {string} [description] - Optional description text.
+ * @property {ReactNode} [children] - Optional child content.
+ * @property {'destructive' | 'warning'} [variant] - Visual variant.
+ * @property {string} [className] - Additional CSS classes.
+ */
 interface WarningBannerProps {
   title: string;
   description?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
   variant?: 'destructive' | 'warning';
   className?: string;
 }
@@ -16,12 +26,12 @@ interface WarningBannerProps {
 /**
  * Warning/alert banner with icon, title, and description or children.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.title - Banner title text.
- * @param {unknown} props.description - Optional description text.
- * @param {unknown} props.children - Optional child content.
- * @param {unknown} props.variant - Visual variant. Default 'destructive'.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {WarningBannerProps} props - Component props.
+ * @param {string} [props.title] - Banner title text.
+ * @param {string} [props.description] - Optional description text.
+ * @param {ReactNode} [props.children] - Optional child content.
+ * @param {string} [props.variant] - Visual variant. Default 'destructive'.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The warning banner element.
  */
