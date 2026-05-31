@@ -72,7 +72,7 @@ export function NoiseBackground({
   noiseIntensity = 0.15,
   speed = 0.1,
   animating = true,
-}: NoiseBackgroundProps) {
+}: NoiseBackgroundProps): ReactNode {
   const id = useId();
 
   // Memoize the noise SVG so it doesn't regenerate on every render
