@@ -1,12 +1,14 @@
+import type { JSX } from 'react';
+
 import { Loader2, PawPrint } from 'lucide-react';
 
 /**
  * Global loading state — shown while page content is streaming.
  * Uses the app's muted, serious design language.
  *
- * @returns {unknown} The loading state content.
+ * @returns {JSX.Element} The loading state content.
  */
-export default function Loading() {
+export default function Loading(): JSX.Element {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-16">
       <PawPrint className="text-muted-foreground/30 mb-4 h-10 w-10" aria-hidden="true" />
