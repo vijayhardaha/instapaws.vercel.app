@@ -6,22 +6,26 @@ import { Separator as SeparatorPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
+interface SeparatorProps extends ComponentProps<typeof SeparatorPrimitive.Root> {}
+
 /**
  * Separator / divider line.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
- * @param {unknown} props.orientation - Separator orientation.
- * @param {unknown} props.decorative - Whether the separator is purely decorative.
+ * @param {SeparatorProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
+ * @param {string} [props.orientation] - Separator orientation.
+ * @param {boolean} [props.decorative] - Whether the separator is purely decorative.
  *
  * @returns {JSX.Element} The separator element.
+ *
+ * @type {SeparatorProps}
  */
 function Separator({
   className,
   orientation = 'horizontal',
   decorative = true,
   ...props
-}: ComponentProps<typeof SeparatorPrimitive.Root>): JSX.Element {
+}: SeparatorProps): JSX.Element {
   return (
     <SeparatorPrimitive.Root
       data-slot="separator"
