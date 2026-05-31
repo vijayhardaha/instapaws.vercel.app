@@ -61,7 +61,7 @@ export const BackgroundBeams = memo(({ className }: { className?: string }) => {
   return (
     <div
       className={cn(
-        'absolute inset-0 flex h-full w-full items-center justify-center [mask-size:40px] [mask-repeat:no-repeat]',
+        'absolute inset-0 flex h-full w-full items-center justify-center mask-size-[40px] mask-no-repeat',
         className
       )}
     >
