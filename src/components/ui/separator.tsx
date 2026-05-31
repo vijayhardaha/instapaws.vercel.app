@@ -1,6 +1,6 @@
 'use client';
 
-import { type ComponentProps } from 'react';
+import { type ComponentProps, type JSX } from 'react';
 
 import { Separator as SeparatorPrimitive } from 'radix-ui';
 
@@ -14,14 +14,14 @@ import { cn } from '@/lib/utils';
  * @param {unknown} props.orientation - Separator orientation.
  * @param {unknown} props.decorative - Whether the separator is purely decorative.
  *
- * @returns {unknown} The separator element.
+ * @returns {JSX.Element} The separator element.
  */
 function Separator({
   className,
   orientation = 'horizontal',
   decorative = true,
   ...props
-}: ComponentProps<typeof SeparatorPrimitive.Root>) {
+}: ComponentProps<typeof SeparatorPrimitive.Root>): JSX.Element {
   return (
     <SeparatorPrimitive.Root
       data-slot="separator"
