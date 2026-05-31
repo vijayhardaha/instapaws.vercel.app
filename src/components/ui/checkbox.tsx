@@ -7,15 +7,19 @@ import { Checkbox as CheckboxPrimitive } from 'radix-ui';
 
 import { cn } from '@/lib/utils';
 
+interface CheckboxProps extends ComponentProps<typeof CheckboxPrimitive.Root> {}
+
 /**
  * Checkbox input component.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.className - Additional CSS classes.
+ * @param {CheckboxProps} props - Component props.
+ * @param {string} [props.className] - Additional CSS classes.
  *
  * @returns {JSX.Element} The checkbox element.
+ *
+ * @type {CheckboxProps}
  */
-function Checkbox({ className, ...props }: ComponentProps<typeof CheckboxPrimitive.Root>): JSX.Element {
+function Checkbox({ className, ...props }: CheckboxProps): JSX.Element {
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
