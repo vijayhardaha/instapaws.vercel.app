@@ -24,7 +24,7 @@ interface Props {
  *
  * @returns {ReactNode} The password gate or authenticated content.
  */
-export function ModerateAuthGate({ children }: Props) {
+export function ModerateAuthGate({ children }: Props): ReactNode {
   const [authenticated, setAuthenticated] = useState(() => {
     try {
       return sessionStorage.getItem(AUTH_KEY) === 'true';
