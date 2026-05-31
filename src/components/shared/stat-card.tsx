@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { cn } from '@/lib/utils';
 
 interface StatCardProps {
@@ -16,7 +18,7 @@ interface StatCardProps {
  *
  * @returns {JSX.Element} Stat card with value and label.
  */
-export function StatCard({ value, label, className }: StatCardProps) {
+export function StatCard({ value, label, className }: StatCardProps): JSX.Element {
   return (
     <div className={cn('text-center', className)}>
       <p className="text-foreground text-3xl font-bold tracking-tight sm:text-4xl">{value}</p>
