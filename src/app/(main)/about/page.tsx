@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { ShieldCheck, Users, Scale, Flag, ArrowRight, Heart, Eye, Ban } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -55,9 +57,9 @@ const BOUNDARIES = [
 /**
  * About page — mission, principles, moderation process, boundaries.
  *
- * @returns {unknown} The about page content.
+ * @returns {JSX.Element} The about page content.
  */
-export default function AboutPage() {
+export default function AboutPage(): JSX.Element {
   return (
     <>
       <HeroBanner
