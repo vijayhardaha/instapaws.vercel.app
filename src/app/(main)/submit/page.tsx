@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import type { Metadata } from 'next';
 
 import { SubmitFormClient } from './submit-form-client';
@@ -11,8 +13,8 @@ export const metadata: Metadata = {
 /**
  * Submit page — renders the video submission form.
  *
- * @returns {unknown} The submit page content.
+ * @returns {JSX.Element} The submit page content.
  */
-export default function SubmitPage() {
+export default function SubmitPage(): JSX.Element {
   return <SubmitFormClient />;
 }
