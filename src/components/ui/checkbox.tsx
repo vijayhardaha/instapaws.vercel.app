@@ -20,7 +20,24 @@ function Checkbox({ className, ...props }: ComponentProps<typeof CheckboxPrimiti
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        'peer border-input focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground dark:data-checked:bg-primary relative flex size-4 shrink-0 items-center justify-center rounded-lg border transition-colors outline-none group-has-disabled/field:opacity-50 after:absolute after:-inset-x-3 after:-inset-y-2 focus-visible:ring-3 disabled:cursor-not-allowed disabled:opacity-50 aria-invalid:ring-3',
+        [
+          // Layout and sizing
+          'relative flex size-4 shrink-0 items-center justify-center',
+          // Border and styling
+          'peer border-input rounded-lg border bg-transparent transition-colors',
+          // Focus states
+          'focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-3',
+          // Checked states
+          'data-checked:border-primary data-checked:bg-primary data-checked:text-primary-foreground',
+          // Disabled states
+          'group-has-disabled/field:opacity-50 disabled:cursor-not-allowed disabled:opacity-50',
+          // Aria-invalid states
+          'aria-invalid:border-destructive aria-invalid:ring-destructive/20 aria-invalid:aria-checked:border-primary aria-invalid:ring-3',
+          // Dark mode
+          'dark:bg-input/30 dark:aria-invalid:border-destructive/50 dark:aria-invalid:ring-destructive/40 dark:data-checked:bg-primary',
+          // Outline and interaction
+          'outline-none after:absolute after:-inset-x-3 after:-inset-y-2',
+        ].join(' '),
         className
       )}
       {...props}
