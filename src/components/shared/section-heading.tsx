@@ -31,8 +31,8 @@ export function SectionHeading({
 }: SectionHeadingProps): JSX.Element {
   return (
     <div className={cn(align === 'center' && 'mx-auto text-center', className)}>
-      {tag && <p className="text-accent mb-2 text-sm font-semibold tracking-widest uppercase">{tag}</p>}
-      <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">{title}</h2>
+      {tag && <p className="text-accent mb-1 text-sm font-bold tracking-widest uppercase">・{tag}・</p>}
+      <h2 className="text-2xl font-extrabold tracking-tight sm:text-3xl">{title}</h2>
       {description && <p className="mt-3 text-lg leading-relaxed opacity-80">{description}</p>}
     </div>
   );
