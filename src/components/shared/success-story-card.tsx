@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { Calendar, Heart } from 'lucide-react';
 
 import { Badge } from '@/components/ui/badge';
@@ -15,9 +17,9 @@ interface SuccessStoryCardProps {
  * @param {unknown} props - Component props.
  * @param {unknown} props.story - The success story data.
  *
- * @returns {unknown} The success story card element.
+ * @returns {JSX.Element} The success story card element.
  */
-export function SuccessStoryCard({ story }: SuccessStoryCardProps) {
+export function SuccessStoryCard({ story }: SuccessStoryCardProps): JSX.Element {
   return (
     <Card className="flex flex-col">
       <CardHeader>
