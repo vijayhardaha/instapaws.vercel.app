@@ -48,8 +48,8 @@ export function VideoCard({ video }: VideoCardProps): JSX.Element {
         </div>
       </CardHeader>
       <CardContent className="flex-1">
-        <p className="text-muted-foreground line-clamp-3 text-sm">{video.description}</p>
-        {video.location && <p className="text-muted-foreground/60 mt-2 text-xs">📍 {video.location}</p>}
+        <p className="text-muted-foreground line-clamp-3">{video.description}</p>
+        {video.location && <p className="text-muted-foreground/70 mt-2 text-sm">📍 {video.location}</p>}
       </CardContent>
       <CardFooter className="border-border flex items-center justify-between border-t pt-4">
         <Badge variant="outline" className="text-xs">
