@@ -1,3 +1,5 @@
+import type { JSX } from 'react';
+
 import { PhoneCall, FileText, ShieldCheck, Flag, BookOpen } from 'lucide-react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -81,9 +83,9 @@ const STEPS = [
 /**
  * Rescue page — step-by-step action guide.
  *
- * @returns {unknown} The rescue page content.
+ * @returns {JSX.Element} The rescue page content.
  */
-export default function RescuePage() {
+export default function RescuePage(): JSX.Element {
   return (
     <>
       <HeroBanner
