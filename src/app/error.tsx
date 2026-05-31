@@ -11,9 +11,9 @@ import { Button } from '@/components/ui/button';
  * Global error boundary — shown when an unexpected error
  * occurs during rendering. Allows retry or navigation home.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.error - The error that occurred.
- * @param {unknown} props.reset - Function to reset the error boundary.
+ * @param {{ error: Error & { digest?: string }; reset: () => void }} props - Component props.
+ * @param {Error} [props.error] - The error that occurred.
+ * @param {() => void} [props.reset] - Function to reset the error boundary.
  *
  * @returns {JSX.Element} The error page with retry and home navigation.
  */
