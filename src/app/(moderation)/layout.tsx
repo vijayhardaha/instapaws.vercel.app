@@ -7,8 +7,8 @@ import Link from 'next/link';
  * Moderation layout — stripped-down layout without public site navigation.
  * Only a minimal top bar with a link back to the main site.
  *
- * @param {unknown} props - Component props.
- * @param {unknown} props.children - Child content to render.
+ * @param {{ children: ReactNode }} props - Component props.
+ * @param {ReactNode} [props.children] - Child content to render.
  *
  * @returns {ReactNode} The moderation layout with minimal header.
  */
